@@ -2,10 +2,20 @@ import React from "react"
 import { css } from "@emotion/core"
 import "./layout.css"
 import { useStaticQuery, Link, graphql } from "gatsby"
-
+import { FaBars } from "react-icons/fa"
 import { rhythm } from "../utils/typography"
 
+
 export default function Layout({ children }) {
+    function toggleTopnav(e) {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+
     const data = useStaticQuery(
         graphql`
             query {
@@ -18,12 +28,11 @@ export default function Layout({ children }) {
     )
     return (
         <div
-            css={css`
-                margin: 0 auto;
-                max-width: 700px;
-                padding: ${rhythm(2)};
-                padding-top: ${rhythm(1.5)};
-                `}
+            className="layout">
+        <div
+            className="topnav"
+            class="topnav"
+            id="myTopnav"
         >
             <Link to={`/`}>
                 <h3
@@ -37,6 +46,7 @@ export default function Layout({ children }) {
                 </h3>
              </Link>
              <Link
+                activeClassName="active"
                 to={`/about/`}
                 css={css`
                     float:right;
@@ -44,6 +54,7 @@ export default function Layout({ children }) {
             >About
             </Link>
              <Link
+                activeClassName="active"
                 to={`/projects/`}
                 css={css`
                     float:right;
@@ -51,6 +62,11 @@ export default function Layout({ children }) {
                     `}
             >Projects
             </Link>
+            <a
+                className="icon"
+                onClick={toggleTopnav}
+            ><FaBars className="react-icons" /></a>
+        </div>
             {children}
         </div>
     )

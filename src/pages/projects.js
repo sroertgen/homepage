@@ -22,7 +22,7 @@ export default function Projects({ data }) {
           <Link
             to={node.fields.slug}
             css={css`
-              text-decoration: none;
+              text-decoration: none !important;
               color: inherit;
               `}
           >
