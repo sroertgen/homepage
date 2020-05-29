@@ -2,6 +2,10 @@ html {
     line-height: 1.5;
 }
 
+a {
+    color: black;
+}
+
 .react-icons {
     vertical-align: middle;
     height: 32px;
