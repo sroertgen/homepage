@@ -71,7 +71,7 @@ export default function Layout({ children }) {
             >
             <div
                 id="menuicon"
-                class="react-icons menu-close">
+                class="react-icons">
                 <FaBars className="react-icons" />
             </div>
             </a>
