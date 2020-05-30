@@ -9,10 +9,13 @@ import { rhythm } from "../utils/typography"
 export default function Layout({ children }) {
     function toggleTopnav(e) {
         var x = document.getElementById("myTopnav");
+        var menuIcon = document.getElementById("menuicon");
         if (x.className === "topnav") {
             x.className += " responsive";
+            menuIcon.className = "react-icons menu-open";
         } else {
             x.className = "topnav";
+            menuIcon.className = "react-icons menu-close";
         }
     }
 
@@ -65,7 +68,13 @@ export default function Layout({ children }) {
             <a
                 className="icon"
                 onClick={toggleTopnav}
-            ><FaBars className="react-icons" /></a>
+            >
+            <div
+                id="menuicon"
+                class="react-icons">
+                <FaBars className="react-icons" />
+            </div>
+            </a>
         </div>
             {children}
         </div>

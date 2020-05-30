@@ -13,6 +13,10 @@ a {
     margin-right: 1rem;
 }
 
+.react-icons.menu-open {
+    transform: rotate(90deg);
+}
+
 .layout {
     margin: 0 auto;
     max-width: 700px;
@@ -38,6 +42,37 @@ a {
     cursor: pointer;
 }
 
+.menu-open {
+    animation-name: turn-menu-open;
+    animation-duration: 2s;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+.menu-close {
+    animation-name: turn-menu-close;
+    animation-duration: 2s;
+    animation-direction: forwards;
+}
+
+@keyframes turn-menu-open {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes turn-menu-close {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {
@@ -48,9 +83,10 @@ a {
         position: absolute;
         float: right;
         display: block;
-        right: 2em;
+        right: 1rem;
         top: 1.5rem;
     }
+
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
@@ -66,9 +102,9 @@ a {
         text-align: left;
     }
 
-    .topnav.responsive a.icon {
+    .topnav.responsive a.icon div.menu-open {
         position: absolute;
-        right: 0em;
-        top: 0rem;
+        right: -2rem;
+        top: -1.5rem;
     }
 }
