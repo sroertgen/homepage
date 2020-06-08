@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { css } from "@emotion/core"
 import Layout from "../components/layout"
 
 export default function Blogpost({ data }) {
@@ -7,8 +8,19 @@ export default function Blogpost({ data }) {
     return (
         <Layout>
             <div>
-                <h1>{ post.frontmatter.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+            <h1>{ post.frontmatter.title }</h1>
+            <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+            { post.frontmatter.link &&
+              <div
+              css={css`
+                text-align:center
+                    `}>
+              <hr />
+              <a href={ post.frontmatter.link } target="_blank">Link zum Repo</a>
+              <br />
+              <br />
+              </div>
+            }
             </div>
         </Layout>
     )
@@ -20,6 +32,7 @@ export const query = graphql`
             html
             frontmatter {
                 title
+                link
             }
         }
     }`

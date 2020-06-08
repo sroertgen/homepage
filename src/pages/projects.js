@@ -36,7 +36,7 @@ export default function Projects({ data }) {
               css={css`
                 color: #bbb;
               `}
-            > - {node.frontmatter.date}
+            > 
             </span> </h3>
             <p>{node.excerpt}</p>
         </Link>
