@@ -1,7 +1,7 @@
 ---
 title: "OER-Metadata-Editor"
 date: "2020-04-18"
-link: "https://github.com/openeduhub**
+link: "https://github.com/openeduhub"
 ---
 
 Ein kleiner Metadata-Editor-Prototyp, der sich mittels einer kleinen FLASK-APP das Vokabular der LRMI-Spezifikation direkt von der offiziellen Spezifikation von dublincore holt.
