@@ -18,6 +18,7 @@ module.exports = {
     social: {
       twitter: `steffenr42`,
       github: `sroertgen`,
+      gitlab: `sroertgen`,
       mail: `kontakt@steffen-roertgen.de`
     }
   },

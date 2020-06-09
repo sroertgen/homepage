@@ -1,9 +1,7 @@
 import React from "react" 
 import { css } from "@emotion/core"
 import Layout from "../components/layout"
-import { FaGithub } from "react-icons/fa"
-import { FaTwitter } from "react-icons/fa"
-import { FaEnvelope } from "react-icons/fa"
+import { FaGithub, FaGitlab, FaTwitter, FaEnvelope } from "react-icons/fa"
 import photo from "../assets/photo.jpg"
 import { graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
@@ -36,6 +34,7 @@ export default function About({data}) {
                 alt="Steffen Rörtgen"/>
             <h3>Steffen Rörtgen</h3>
             <a target="_blank" href={`https://github.com/${data.site.siteMetadata.social.github}`}><FaGithub className="react-icons" /></a>
+              <a target="_blank" href={`https://gitlab.com/${data.site.siteMetadata.social.gitlab}`}><FaGitlab className="react-icons" /></a>
             <a target="_blank" href={`https://twitter.com/${data.site.siteMetadata.social.twitter}`}><FaTwitter className="react-icons" /></a>
             <a href={`mailto:${data.site.siteMetadata.social.mail}`}><FaEnvelope className="react-icons" /></a>
             </div>
@@ -62,6 +61,7 @@ export const query = graphql`
                 description
                 social {
                     github
+                    gitlab
                     twitter
                     mail
                 }
