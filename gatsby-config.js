@@ -46,12 +46,23 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
-    `gatsby-transformer-remark`,
+    {
+        resolve: `gatsby-transformer-remark`,
+        options: {
+            plugins: [
+                {
+                    resolve: `gatsby-remark-prismjs`,
+                    options: {
+                    },
+                },
+            ],
+        },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography.js`,
-      }
-    }
+      },
+    },
   ],
 }
