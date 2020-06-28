@@ -159,6 +159,6 @@ I further modified the Footer a little bit and removed some elements.
 Last I edited the `config.js` and added the correct heading, subHeading as well as socialLinks and that's basically it.
 
 
-## Deploy on GitHub
+## Deploy to GitHub-Pages
 
 TODO
