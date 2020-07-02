@@ -41,9 +41,10 @@ gatsby new gatsby-starter-directive https://github.com/anubhavsrivastava/gatsby-
 
 We simply need an index page and that's where I want to put all the content from my Markdown file.
 
-So first Gatsby has to know, where to look for the markdown file. In the Gatsby ecosystem there is a plugin for everything. The corresponfing plugin to look for a file is called [`gatsby-source-filesystem`](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?=). We install it like mentioned and add it to our `gatsby-config.js`, where all the plugins are managed like this:
+So first Gatsby has to know, where to look for the markdown file. In the Gatsby ecosystem there is a plugin for everything. The corresponding plugin to look for a file is called [`gatsby-source-filesystem`](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?=). We install it like mentioned and add it to our `gatsby-config.js`, where all the plugins are managed like this:
 
 ```javascript
+// gatsby-config.js
 {
   resolve: `gatsby-source-filesystem`,
   options: {
@@ -54,10 +55,10 @@ So first Gatsby has to know, where to look for the markdown file. In the Gatsby 
 ```
 
 This makes the markdown folder accessible for GraphQL and we can import files from there.
-We also need to import a Markdown parser, so our File gets converted into HTML.
-Since we will also work with pictures and iframes in our Markdown-file, we will the respectuve plugins as well, so our `gatsby-config.js`, will also have to include these plugins:
+We also need to import a Markdown parser, so our file gets converted into HTML.
+Since we will also work with pictures and iframes in our Markdown-file, we will the respective plugins as well, so our `gatsby-config.js` will also have to include these plugins:
 
-- [Gatsby-Transformer-Remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/?=transformer) for converting Markdown to HTML
+- [gatsby-transformer-remark](https://www.gatsbyjs.org/packages/gatsby-transformer-remark/?=transformer) for converting Markdown to HTML
 - [gatsby-remark-responsive-iframe](https://www.gatsbyjs.org/packages/gatsby-remark-responsive-iframe/?=gatsby%20remark%20iframe) for having nice responsive iframes
 - [gatsby-remark-images](https://www.gatsbyjs.org/packages/gatsby-remark-images/?=gatsby%20remark%20imag) for responsive images
 
@@ -81,11 +82,12 @@ Since we will also work with pictures and iframes in our Markdown-file, we will 
 
 ```
 
-So we got our data, markdown parser and are able to work with images.
-Let's jump right to the `index.js` and modify it the following way to get the data from a GraphQL query and implement it in our HTML:
+Now we get our data, markdown parser and are able to work with images.
+Let's jump right to the `index.js` and modify it the following way to get the data (the Markdown-file) from a GraphQL query, parse it and implement it in our HTML:
 
 
 ```javascript
+// index.js
 import React from 'react';
 
 import Layout from '../components/Layout';
@@ -133,7 +135,7 @@ So what did I do?
 
 First I imported GraphQL to use it for my query.
 
-I added the data object to the IndexPage so I can use it there.
+I added the data object to the IndexPage component so I can use it there.
 
 But where does it come from? The data object is returned by the pageQuery at the end of the file: 
 
@@ -161,4 +163,106 @@ Last I edited the `config.js` and added the correct heading, subHeading as well 
 
 ## Deploy to GitHub-Pages
 
-TODO
+I'm currently deploying to GitHub-Pages using two different ways:
+
+- Using the [gh-pages](https://github.com/tschaub/gh-pages)-Tool
+- Using [GitHub-Actions](https://github.com/features/actions)
+
+I will shortly explain how they work and what in what use cases I'm preferring each method.
+
+### gh-pages
+
+The gh-pages tool is mentioned on Gatsby's own website for explaining, [how to host a Gatsby site on GitHub-Pages](https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/).
+Since the explanation there is quite comprehensive I will just shortly recap, how it generally works.
+
+First, make sure your project is a git project and is pushed to GitHub (at least once).
+Then install the respective package:
+
+```shell
+npm install gh-pages --save-dev
+```
+
+When you want to host your site in a repo, like `username.github.io/reponamae`, you have to set `pathPrefix`, so the links inside your Gatsby project will work. In your `gatsby-config.js` add: 
+
+```javascript
+module.exports = {
+  pathPrefix: "/reponame",
+}
+```
+
+Now we add a deploy script to our `package.json`:
+
+```json
+// package.json
+{
+  "scripts": {
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  }
+}
+```
+
+After that one just has to run `npm run deploy` and the public folder gets build and pushed to your gh-pages branch.
+Check that you have set the `gh-pages`-branch as the source in your Repo-settings and after a few minutes your page should be live.
+
+**NOTE:** I had to switch between master and gh-pages branch one time to make it work.
+Or maybe I was not patient enough.
+
+I'm using this approach, for example, on this site, my homepage. Sometimes I'm still working on something and want to save everything in my git-repo, but don't want it to be published yet. That's the advantage of this approach, I have full control over **when** I'm publishing something. On the other hand you have to explicitly call the deploy script. Which I would not call a disadvantage, but that's how it is.
+Also consider that your site gets build from your local files **NOT** from the files in your repo.
+
+
+### GitHub Actions
+
+GitHub Actions are designed to automate workflows, e.g. to run automatically tests or use it for continous integration and deployment.
+First of all you have to write a workflow file, which is living in your repo at `.github/workflows/main.yml`.
+Inside this file you define what should happen, after you pushed to this repo.
+
+Let's look at the file for the klimakrise-project:
+
+```yaml
+name: Build /public and delpoy to gh-pages with docker container
+
+on:
+  push:
+    branches:
+      - master
+      - gh-pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+
+      - name: remove public dir, if exists
+        run: rm -rf public
+
+      - run: npm install
+      
+      - run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+```
+
+What's happening?
+
+After we gave the action a name, we define the branches on which this action is to be triggered.
+
+After that we say what should happen:
+  - We want to run this job on ubuntu-latest VM. 
+  - Since we want to use the repo itself in this action, we have to check it out, to make it available in this action
+  - we then remove the public-folder in case it is already there
+  - we install the necessary npm packages
+  - building the public dir with `npm run build`
+  - we deploy the public-folder to gh-pages branch reusing a GitHub-action from peaceiris. For this we have to provide a secret variable `GITHUB_TOKEN` and the name of the folder to be deployed there. The token is automatically passed from your repo to the VM, so you don't have to worry about this.
+
+Now every time you push to master branch, this action gets triggered and builds your site from the master repo.
+
+
