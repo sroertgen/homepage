@@ -21,8 +21,9 @@ Of course one has to learn a bit GraphQL, but the use-cases really look promisin
 <p>So I went for the <a href="https://www.gatsbyjs.org/starters/anubhavsrivastava/gatsby-starter-directive/"> same as Matthias did </a> and simply used the given command to clone it:</p>
 <div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">gatsby new gatsby-starter-directive https://github.com/anubhavsrivastava/gatsby-starter-directive</code></pre></div>
 <p>We simply need an index page and that's where I want to put all the content from my Markdown file.</p>
-<p>So first Gatsby has to know, where to look for the markdown file. In the Gatsby ecosystem there is a plugin for everything. The corresponfing plugin to look for a file is called <a href="https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?="><code class="language-text">gatsby-source-filesystem</code></a>. We install it like mentioned and add it to our <code class="language-text">gatsby-config.js</code>, where all the plugins are managed like this:</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+<p>So first Gatsby has to know, where to look for the markdown file. In the Gatsby ecosystem there is a plugin for everything. The corresponding plugin to look for a file is called <a href="https://www.gatsbyjs.org/packages/gatsby-source-filesystem/?="><code class="language-text">gatsby-source-filesystem</code></a>. We install it like mentioned and add it to our <code class="language-text">gatsby-config.js</code>, where all the plugins are managed like this:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// gatsby-config.js</span>
+<span class="token punctuation">{</span>
   resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-source-filesystem</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
   options<span class="token operator">:</span> <span class="token punctuation">{</span>
   path<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>__dirname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/src/markdown</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
@@ -30,10 +31,10 @@ Of course one has to learn a bit GraphQL, but the use-cases really look promisin
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
 <p>This makes the markdown folder accessible for GraphQL and we can import files from there.
-We also need to import a Markdown parser, so our File gets converted into HTML.
-Since we will also work with pictures and iframes in our Markdown-file, we will the respectuve plugins as well, so our <code class="language-text">gatsby-config.js</code>, will also have to include these plugins:</p>
+We also need to import a Markdown parser, so our file gets converted into HTML.
+Since we will also work with pictures and iframes in our Markdown-file, we will the respective plugins as well, so our <code class="language-text">gatsby-config.js</code> will also have to include these plugins:</p>
 <ul>
-<li><a href="https://www.gatsbyjs.org/packages/gatsby-transformer-remark/?=transformer">Gatsby-Transformer-Remark</a> for converting Markdown to HTML</li>
+<li><a href="https://www.gatsbyjs.org/packages/gatsby-transformer-remark/?=transformer">gatsby-transformer-remark</a> for converting Markdown to HTML</li>
 <li><a href="https://www.gatsbyjs.org/packages/gatsby-remark-responsive-iframe/?=gatsby%20remark%20iframe">gatsby-remark-responsive-iframe</a> for having nice responsive iframes</li>
 <li><a href="https://www.gatsbyjs.org/packages/gatsby-remark-images/?=gatsby%20remark%20imag">gatsby-remark-images</a> for responsive images</li>
 </ul>
@@ -53,9 +54,10 @@ Since we will also work with pictures and iframes in our Markdown-file, we will 
         <span class="token punctuation">]</span><span class="token punctuation">,</span> 
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
-<p>So we got our data, markdown parser and are able to work with images.
-Let's jump right to the <code class="language-text">index.js</code> and modify it the following way to get the data from a GraphQL query and implement it in our HTML:</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<p>Now we get our data, markdown parser and are able to work with images.
+Let's jump right to the <code class="language-text">index.js</code> and modify it the following way to get the data (the Markdown-file) from a GraphQL query, parse it and implement it in our HTML:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// index.js</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> Layout <span class="token keyword">from</span> <span class="token string">'../components/Layout'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> graphql <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"gatsby"</span>
@@ -98,7 +100,7 @@ query IndexPageQuery {
 </span><span class="token template-punctuation string">`</span></span></code></pre></div>
 <p>So what did I do?</p>
 <p>First I imported GraphQL to use it for my query.</p>
-<p>I added the data object to the IndexPage so I can use it there.</p>
+<p>I added the data object to the IndexPage component so I can use it there.</p>
 <p>But where does it come from? The data object is returned by the pageQuery at the end of the file: </p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">const</span> pageQuery <span class="token operator">=</span> graphql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   query IndexPageQuery {
@@ -116,4 +118,78 @@ query IndexPageQuery {
 <p>I further modified the Footer a little bit and removed some elements.
 Last I edited the <code class="language-text">config.js</code> and added the correct heading, subHeading as well as socialLinks and that's basically it.</p>
 <h2>Deploy to GitHub-Pages</h2>
-<p>TODO</p></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/3_klimakrise/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-f27218bb75b7300defe4.js"],"component---src-pages-about-js":["/component---src-pages-about-js-49cefb193b3e5523d578.js"],"component---src-pages-index-js":["/component---src-pages-index-js-f3fcb1a2e997715aba00.js"],"component---src-pages-projects-js":["/component---src-pages-projects-js-cc746a48b8b0f96d8fde.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-f313c1cecfee47996ed4.js"]};/*]]>*/</script><script src="/homepage/component---src-templates-blog-post-js-f313c1cecfee47996ed4.js" async=""></script><script src="/homepage/commons-f875af55e2d43c4bb925.js" async=""></script><script src="/homepage/1bfc9850-7e46bd5d586a2aa23b25.js" async=""></script><script src="/homepage/styles-9b6f388623a2ec93d35f.js" async=""></script><script src="/homepage/app-f27218bb75b7300defe4.js" async=""></script><script src="/homepage/framework-75da9754c2a76bbaf08a.js" async=""></script><script src="/homepage/webpack-runtime-494fd07960c0e95e955c.js" async=""></script></body></html>
+<p>I'm currently deploying to GitHub-Pages using two different ways:</p>
+<ul>
+<li>Using the <a href="https://github.com/tschaub/gh-pages">gh-pages</a>-Tool</li>
+<li>Using <a href="https://github.com/features/actions">GitHub-Actions</a></li>
+</ul>
+<p>I will shortly explain how they work and what in what use cases I'm preferring each method.</p>
+<h3>gh-pages</h3>
+<p>The gh-pages tool is mentioned on Gatsby's own website for explaining, <a href="https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/">how to host a Gatsby site on GitHub-Pages</a>.
+Since the explanation there is quite comprehensive I will just shortly recap, how it generally works.</p>
+<p>First, make sure your project is a git project and is pushed to GitHub (at least once).
+Then install the respective package:</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> gh-pages --save-dev</code></pre></div>
+<p>When you want to host your site in a repo, like <code class="language-text">username.github.io/reponamae</code>, you have to set <code class="language-text">pathPrefix</code>, so the links inside your Gatsby project will work. In your <code class="language-text">gatsby-config.js</code> add: </p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  pathPrefix<span class="token operator">:</span> <span class="token string">"/reponame"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Now we add a deploy script to our <code class="language-text">package.json</code>:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token comment">// package.json</span>
+<span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"deploy"</span><span class="token operator">:</span> <span class="token string">"gatsby build --prefix-paths &amp;&amp; gh-pages -d public"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>After that one just has to run <code class="language-text">npm run deploy</code> and the public folder gets build and pushed to your gh-pages branch.
+Check that you have set the <code class="language-text">gh-pages</code>-branch as the source in your Repo-settings and after a few minutes your page should be live.</p>
+<p><strong>NOTE:</strong> I had to switch between master and gh-pages branch one time to make it work.
+Or maybe I was not patient enough.</p>
+<p>I'm using this approach, for example, on this site, my homepage. Sometimes I'm still working on something and want to save everything in my git-repo, but don't want it to be published yet. That's the advantage of this approach, I have full control over <strong>when</strong> I'm publishing something. On the other hand you have to explicitly call the deploy script. Which I would not call a disadvantage, but that's how it is.
+Also consider that your site gets build from your local files <strong>NOT</strong> from the files in your repo.</p>
+<h3>GitHub Actions</h3>
+<p>GitHub Actions are designed to automate workflows, e.g. to run automatically tests or use it for continous integration and deployment.
+First of all you have to write a workflow file, which is living in your repo at <code class="language-text">.github/workflows/main.yml</code>.
+Inside this file you define what should happen, after you pushed to this repo.</p>
+<p>Let's look at the file for the klimakrise-project:</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Build /public and delpoy to gh<span class="token punctuation">-</span>pages with docker container
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> master
+      <span class="token punctuation">-</span> gh<span class="token punctuation">-</span>pages
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout 🛎️
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2 <span class="token comment"># If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.</span>
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">persist-credentials</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> remove public dir<span class="token punctuation">,</span> if exists
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> rm <span class="token punctuation">-</span>rf public
+
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm install
+      
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm run build
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> peaceiris/actions<span class="token punctuation">-</span>gh<span class="token punctuation">-</span>pages@v3
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">github_token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">publish_dir</span><span class="token punctuation">:</span> ./public</code></pre></div>
+<p>What's happening?</p>
+<p>After we gave the action a name, we define the branches on which this action is to be triggered.</p>
+<p>After that we say what should happen:</p>
+<ul>
+<li>We want to run this job on ubuntu-latest VM. </li>
+<li>Since we want to use the repo itself in this action, we have to check it out, to make it available in this action</li>
+<li>we then remove the public-folder in case it is already there</li>
+<li>we install the necessary npm packages</li>
+<li>building the public dir with <code class="language-text">npm run build</code></li>
+<li>we deploy the public-folder to gh-pages branch reusing a GitHub-action from peaceiris. For this we have to provide a secret variable <code class="language-text">GITHUB_TOKEN</code> and the name of the folder to be deployed there. The token is automatically passed from your repo to the VM, so you don't have to worry about this.</li>
+</ul>
+<p>Now every time you push to master branch, this action gets triggered and builds your site from the master repo.</p></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/3_klimakrise/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-f27218bb75b7300defe4.js"],"component---src-pages-about-js":["/component---src-pages-about-js-49cefb193b3e5523d578.js"],"component---src-pages-index-js":["/component---src-pages-index-js-f3fcb1a2e997715aba00.js"],"component---src-pages-projects-js":["/component---src-pages-projects-js-cc746a48b8b0f96d8fde.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-f313c1cecfee47996ed4.js"]};/*]]>*/</script><script src="/homepage/component---src-templates-blog-post-js-f313c1cecfee47996ed4.js" async=""></script><script src="/homepage/commons-f875af55e2d43c4bb925.js" async=""></script><script src="/homepage/1bfc9850-7e46bd5d586a2aa23b25.js" async=""></script><script src="/homepage/styles-9b6f388623a2ec93d35f.js" async=""></script><script src="/homepage/app-f27218bb75b7300defe4.js" async=""></script><script src="/homepage/framework-75da9754c2a76bbaf08a.js" async=""></script><script src="/homepage/webpack-runtime-494fd07960c0e95e955c.js" async=""></script></body></html>
