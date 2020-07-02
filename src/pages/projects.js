@@ -17,10 +17,10 @@ export default function Projects({ data }) {
           Projects
       </h1>
       <p>An overview of projects done | doing | planned.</p>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.allFile.edges.map(({ node }) => (
         <div key={node.id}>
           <Link
-            to={node.fields.slug}
+            to={node.childMarkdownRemark.fields.slug}
             css={css`
               text-decoration: none !important;
               color: inherit;
@@ -31,14 +31,14 @@ export default function Projects({ data }) {
               margin-bottom: ${rhythm(1 / 4)};
             `}
           >
-            {node.frontmatter.title}{" "}
+            {node.childMarkdownRemark.frontmatter.title}{" "}
             <span
               css={css`
                 color: #bbb;
               `}
             > 
             </span> </h3>
-            <p>{node.excerpt}</p>
+            <p>{node.childMarkdownRemark.excerpt}</p>
         </Link>
         </div>
       ))}
@@ -49,22 +49,21 @@ export default function Projects({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
-    filter: {fileAbsolutePath: {regex: "/projects/"}},
-    sort: {fields: [frontmatter___date], order: DESC })
-    {
-      edges {
-        node {
-          id
-          excerpt
+  allFile(filter: {sourceInstanceName: {eq: "projects"}, internal: {mediaType: {eq: "text/markdown"}}}, sort: {fields: childMarkdownRemark___frontmatter___date, order: DESC}) {
+    edges {
+      node {
+        id
+        childMarkdownRemark {
           frontmatter {
-            title
             date(formatString: "DD MMMM, YYYY")
+            title
           }
+          excerpt
           fields {
             slug
           }
         }
       }
     }
+  }
   }`
