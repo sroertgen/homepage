@@ -1,8 +1,8 @@
 ---
-title: "Getting my feet wet with Gatsby"
+title: "Klimakrise🔥 Gatsby Clone"
 date: "2020-06-28"
+link: "https://github.com/sroertgen/klimakrise"
 ---
-
 [Link to GitHub-Repo.](https://github.com/sroertgen/klimakrise)
 
 On the 16th of June [Matthias Andrasch](https://twitter.com/m_andrasch) [ tweeted an ](https://twitter.com/OERhoernchen/status/1272876721067503616?s=20) OER on the current climate crisis:
