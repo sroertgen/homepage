@@ -1,0 +1,17 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cert: <http://www.w3.org/ns/auth/cert#> .
+@prefix rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<> a foaf:PersonalProfileDocument ;
+    foaf:maker <#this> ;
+    foaf:primaryTopic <#this> .
+
+    <#this> a foaf:Person ;
+    foaf:name "Steffen Roertgen";
+    cert:key [
+        a cert:RSAPublicKey;
+        rdfs:label "generated on macbook 19.09.2020";
+        cert:modulus "b8e36693c8c8b0432a683ffee9f31602c41043f8f0d787d9ae28441b0e138d7b6658335b1bdcfb5262a6d3a84541c47778ce5a4b83047ccf8c86e4e0ce29923648c42899c65a76b1811b4ca553aefebd3d88efc1c89d938797b2cbc861f0d92cff91e237e3a5ec90ec284583edad3c8678a1a409c493f877a15a7ee8aecb7f7ed7952a7413db9308b27df8821112c86b2fa07f0b281c4bb07aaa18308cc5eb3fbe7a673437ee2a25e31f1fea700fdb4b63c5ed8ad4b0b96ba6a5fe2860a65da18ffc6dde80a32b7be901ccfb80c838e620d15cd2a55cd96e3b7b4376d88a747fcb370a085c934ec597ad5094ea3f3d3d01301449481cf0f56fcc3468fb0a5d8d"^^xsd:hexBinary;
+        cert:exponent "65537"^^xsd:nonNegativeInteger
+        ] .
