@@ -119,7 +119,7 @@ So what can we do to get the subject based on the data we already have?
 ## Link not label
 
 A promising approach is to enrich the keyword literals with links to keyword vocabularies.
-Since we already got some keyword vocabularies, we can go through these and link the keyword strings to the [EAF-Schlagwortverzeichnis] and [EAF-Sachgebietssystematik].
+Since we already got some keyword vocabularies, we can go through these and link the keyword strings to the [EAF-Schlagwortverzeichnis](https://github.com/openeduhub/oeh-metadata-eaf-schlagwortverzeichnis) and [EAF-Sachgebietssystematik](https://github.com/openeduhub/oeh-metadata-eaf-sachgebietssystematiken).
 This way we might not only get links to these systematics, but also draw conclusions on which subject the resource is about.
 
 We can do the same with the other vocabularies we have as the keywords sometimes also contain entries like "Arbeitsblatt", "Quiz", "Klasse 8", etc. 
