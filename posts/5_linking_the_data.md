@@ -3,8 +3,6 @@ title: "Linking the WLO-Data"
 date: "2020-12-03"
 ---
 
-## Linking WLO-Data
-
 Some time has passed since the last post and quite some things have happened.
 The wirlernenonline-project has published a [data-dump](https://github.com/openeduhub/oeh-wlo-data-dump) of its index and I want to take this as a basis and show, what great things we will be able to do starting to link it.
 

@@ -8,14 +8,14 @@ export default function Home({ data }) {
   return (
     <Layout>
     <div>
-      <h1
+      <h2
         css={css`
           margin-bottom: ${rhythm(1)};
           display: inline-block;
           border-bottom: 1px solid;
           `}>
           Blog
-      </h1>
+      </h2>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>
           <Link
