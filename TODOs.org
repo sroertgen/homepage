@@ -1,0 +1,5 @@
+* TODO add TOC to homepage
+  SCHEDULED: <2021-02-02 Tue>
+  - https://medium.com/swlh/how-to-add-a-toc-in-gatsby-bafe838d6d76
+* TODO add Blog as Link in homepage header
+  SCHEDULED: <2021-02-02 Tue>
