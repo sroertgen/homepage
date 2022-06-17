@@ -11,26 +11,26 @@ BMBF-Projekt Jointly unter anderem für die Erarbeitung von Konzepten für
 skalierbare und vernetzte IT-Infrastrukturen zuständig.
 
 Ein Team rund um Serlo und WirLernenOnline hat sich in einer von der
-GWDG geleiteteten Session mit der Frage besch√§ftigt, wie Metadaten zu
-thematischen Einordnungen ausgetauscht werden k√∂nnen, ohne dass dabei
-Informationen verloren gehen. Serlo.org wird von dem gemeinn√ºtzigen
-Verein Serlo Education e.V. betrieben und bietet √ºber 15.000 Aufgaben,
-Erkl√§rungen und Lernvideos f√ºr Mathematik und andere Schulf√§cher bereit.
-Alle Inhalte werden unter einer freien Lizenz ver√∂ffentlicht und d√ºrfen
-kopiert, ver√§ndert und verbreitet werden.
+GWDG geleiteten Session mit der Frage beschäftigt, wie Metadaten zu
+thematischen Einordnungen ausgetauscht werden können, ohne dass dabei
+Informationen verloren gehen. Serlo.org wird von dem gemeinnützigen
+Verein Serlo Education e.V. betrieben und bietet über 15.000 Aufgaben,
+Erklärungen und Lernvideos für Mathematik und andere Schulfächer bereit.
+Alle Inhalte werden unter einer freien Lizenz veröffentlicht und dürfen
+kopiert, verändert und verbreitet werden.
 
 Sowohl bei WirLernenOnline als auch bei Serlo werden Inhalte in
-thematische Strukturen eingeordnet, die sich an Lehrpl√§nen orientieren.
-Bei WirLernenOnline geschieht dies in den Fachportalen √ºber die sog.
-\"Themenb√§ume\". Diese Themenb√§ume wurden von Lehrer\*innen erstellt,
-die sich auf WirLernenOnline engagieren und bilden eine √ºbergreifende
+thematische Strukturen eingeordnet, die sich an Lehrplänen orientieren.
+Bei WirLernenOnline geschieht dies in den Fachportalen über die sog.
+\"Themenbäume\". Diese Themenbäume wurden von Lehrer\*innen erstellt,
+die sich auf WirLernenOnline engagieren und bilden eine übergreifende
 Taxonomie des jeweiligen Schulfaches ab. Beim einem Datenaustausch
 zwischen den beiden Systemen gehen die Informationen der thematischen
 Einordnung bisher verloren, da kein Mapping zwischen den beiden
-Themenb√§umen besteht. Sinnvoll w√§re es jedoch, wenn die thematischen
-Einordnungen aufeinander gemappt w√ºrden, um Nutzer\*innen in beiden
-Systemen diese Einordnung als zus√§tzliche Information zur Verf√ºgung
-stellen zu k√∂nnen.
+Themenbäumen besteht. Sinnvoll wäre es jedoch, wenn die thematischen
+Einordnungen aufeinander gemappt würden, um Nutzer\*innen in beiden
+Systemen diese Einordnung als zusätzliche Information zur Verfügung
+stellen zu können.
 
 ![Fachportale bei WirLernenOnline](/image1.png)
 
@@ -48,72 +48,72 @@ height="5.329545056867891in"}
 
 Ausschnitt eines Themenbaums bei Serlo
 
-Modellierung der Themenb√§ume in SKOS
+Modellierung der Themenbäume in SKOS
 ------------------------------------
 
-Bei WirLernenOnline werden diese Themenb√§ume in dem RDF-basierten
-Standard SKOS[^1] kodiert und anschlie√üend mit Skohub-Vocabs[^2]
-ver√∂ffentlicht. SKOS (Simple Knowledge Organization System) ist ein
+Bei WirLernenOnline werden diese Themenbäume in dem RDF-basierten
+Standard SKOS[^1] kodiert und anschließend mit Skohub-Vocabs[^2]
+veröffentlicht. SKOS (Simple Knowledge Organization System) ist ein
 W3C-Standard zur Beschreibung kontrollierter Vokabulare. Der Vorteil der
 Beschreibung solcher Vokabulare mit SKOS besteht darin, dass die
 Vokabulare einerseits gut maschinenlesbar sind und somit gut in Software
-verwendet werden k√∂nnen, andererseits besitzen sie ein hohes Ma√ü an
-Nachnutzbarkeit und Interoperabilit√§t. F√ºr eine allgemeine Einf√ºhrung
+verwendet werden können, andererseits besitzen sie ein hohes Maß an
+Nachnutzbarkeit und Interoperabilität. Für eine allgemeine Einführung
 SKOS wurde von dem Kompetenzzentrum Interoperable Metadaten (KIM), einer
-Gruppe innerhalb der Deutschen Initiative f√ºr Netzwerkinformation e.V.
-(DINI), eine Einf√ºhrung f√ºr SKOS ver√∂ffentlicht.[^3]
+Gruppe innerhalb der Deutschen Initiative für Netzwerkinformation e.V.
+(DINI), eine Einführung für SKOS veröffentlicht.[^3]
 
 Eine weitere Eigenschaft von SKOS besteht darin, dass sich Relationen
-zwischen den Begriffen eines Vokabulars ziehen lassen. So k√∂nnen
+zwischen den Begriffen eines Vokabulars ziehen lassen. So können
 Relationen einerseits zu Begriffen im selben Vokabular hinterlegt
 werden, andererseits auch zu Begriffen in anderen Vokabularen. Zur
-Abbildung dieser Relationen stehen verschiedene Attribute zur Verf√ºgung.
+Abbildung dieser Relationen stehen verschiedene Attribute zur Verfügung.
 Um Relationen innerhalb des eigenen Vokabulars abzubilden, werden meist
 `skos:narrower` und `skos:broader` verwendet, um Oberbegriffe und
 Unterbegriffe zu unterscheiden. Das Attribut `skos:related` wird
 verwendet, um assoziierende Relationen zu einem anderen Begriff
 innerhalb desselben Vokabulars auszuzeichnen. Zur Kennzeichnung von
 Relationen zu einem anderen Vokabular stehen die Attribute
-`skos:broadMatch` und `skos:narrowMatch` zur Verf√ºgung, um Ober- und
+`skos:broadMatch` und `skos:narrowMatch` zur Verfügung, um Ober- und
 Unterbegriffe zu unterscheiden, jedoch innerhalb eines anderen
-Vokabulars. Au√üerdem k√∂nnen `skos:closeMatch`, `skos:exactMatch` und
+Vokabulars. Außerdem können `skos:closeMatch`, `skos:exactMatch` und
 `skos:relatedmatch` verwendet werden, um die Art der Beziehung zu
-Begriffen anderer Vokabulare auszudr√ºcken.
+Begriffen anderer Vokabulare auszudrücken.
 
 Im Rahmen des Hackathons haben wir uns dazu entschieden, in einem
 Proof-of-concept zu testen, ob und wie sich die Beziehungen zwischen dem
-Themenbaum von Serlo und dem Themenbaum von WirLernenOnline einf√ºgen
-lassen k√∂nnten. Dazu musste zun√§chst der Themenbaum aus Serlo exportiert
+Themenbaum von Serlo und dem Themenbaum von WirLernenOnline einfügen
+lassen könnten. Dazu musste zunächst der Themenbaum aus Serlo exportiert
 und in SKOS abgebildet werden.
 
-Anschlie√üend stellte sich die Frage, wie das Mapping zwischen den beiden
-B√§umen hergestellt werden kann. Hierbei gibt es grunds√§tzlich zwei
-M√∂glichkeiten:
+Anschließend stellte sich die Frage, wie das Mapping zwischen den beiden
+Bäumen hergestellt werden kann. Hierbei gibt es grundsätzlich zwei
+Möglichkeiten:
 
 -   Das Mapping direkt in den Turtle-Dateien einpflegen[^4]
 
--   Das Mapping mit Hilfe eines dedizierten Mapping-Tools durchf√ºhren
+-   Das Mapping mit Hilfe eines dedizierten Mapping-Tools durchführen
 
 Das Hinterlegen des Mappings direkt in den Turtle-Dateien ist besonders
-bei gr√∂√üeren Mappings aufw√§ndig und fehleranf√§llig. Au√üerdem sind
+bei größeren Mappings aufwändig und fehleranfällig. Außerdem sind
 Kenntnisse der Turtle-Syntax notwendig. Auch wenn diese nicht allzu
 schwierig zu lernen ist, sollten die inhaltlichen Expert\*innen, die
-sich mit solchen Mappings besch√§ftigen nicht damit besch√§ftigen m√ºssen,
+sich mit solchen Mappings beschäftigen nicht damit beschäftigen müssen,
 eine spezielle Syntax zu erlernen, sondern sich auf das Mapping
-konzentrieren k√∂nnen. Auch bietet ein dediziertes Mapping-Tool weitere
-Vorteile, wie eine visuelle Oberfl√§che sowie ggf. softwaregest√ºtze
-Unterst√ºtzung beim Mapping.
+konzentrieren können. Auch bietet ein dediziertes Mapping-Tool weitere
+Vorteile, wie eine visuelle Oberfläche sowie ggf. softwaregestütze
+Unterstützung beim Mapping.
 
 Im Rahmen der OER-Metadatengruppe und Curricula-Gruppe wurde dazu
 bereits am 17.03.2021 ein gemeinsamer Workshop mit dem coli-conc Team
-der Verbundzentrale des GBV durchgef√ºhrt. Das coli-conc Projekt hat dazu
-das Tool cocoda entwickelt, eine Vue.js Applikation mit der auf einer
-ansprechend und √ºbersichtlich gestalteten Oberfl√§che Mappings zwischen
+der Verbundzentrale des GBV durchgeführt. Das coli-conc Projekt hat dazu
+das Tool "Cocoda" entwickelt, eine Vue.js Applikation mit der auf einer
+ansprechend und übersichtlich gestalteten Oberfläche Mappings zwischen
 Vokabularen erarbeitet werden kann.
 
 In dem Workshop wurde bereits anhand zwei unterschiedlicher
-F√§cherklassifikationen ein solches Mapping ausprobiert und demonstriert.
-Cocoda bietet dabei verschiedene M√∂glichkeiten an, ein Vokabular
+Fächerklassifikationen ein solches Mapping ausprobiert und demonstriert.
+Cocoda bietet dabei verschiedene Möglichkeiten an, ein Vokabular
 einzulesen:
 
 -   Skosmos-API
@@ -122,12 +122,12 @@ einzulesen:
 
 -   SkoHub (momentan noch in der Test-Phase)
 
-Da wir von der M√∂glichkeit SkoHub direkt benutzen zu k√∂nnen erst nach
-dem Hackathon erfahren haben, haben wir uns f√ºr einen eigenen
+Da wir von der Möglichkeit SkoHub direkt benutzen zu können erst nach
+dem Hackathon erfahren haben, haben wir uns für einen eigenen
 JSKOS-Server entschieden.
 
-Insgesamt waren f√ºr uns also folgende Arbeitsschritte notwendig, um ein
-Mapping zwischen zwei Vokabularen in cocoda durchzuf√ºhren:
+Insgesamt waren für uns also folgende Arbeitsschritte notwendig, um ein
+Mapping zwischen zwei Vokabularen in Cocoda durchzuführen:
 
 1.  Bereitstellung des Vokabulars im JSKOS-Format[^6]
 
@@ -139,29 +139,29 @@ Bereitstellung des Vokabulars im JSKOS-Format
 ---------------------------------------------
 
 Nachdem das Serlo-Team den Mathe-Themenbaum bereits in SKOS modelliert
-hat, musste nun beide Taxonomien in das JSKOS-Format √ºberf√ºhrt werden.
-Dazu gibt es gl√ºcklicherweise das Tool skos2jskos, das hierf√ºr genutzt
+hat, musste nun beide Taxonomien in das JSKOS-Format überführt werden.
+Dazu gibt es glücklicherweise das Tool skos2jskos, das hierfür genutzt
 werden kann. Nach der Installation kann mit einem einfachen
 `skos2jskos /``your_skos_file.ttl``/` das entsprechende SKOS-File in das
 JSKOS-Format konvertiert werden. Als Ergebnis werden zwei Dateien
-generiert: `schema.json` und `concepts.ndjson`. Diese werden im n√§chsten
+generiert: `schema.json` und `concepts.ndjson`. Diese werden im nächsten
 Schritt in den JSKOS Server importiert.
 
 Hosting des Vokabulars auf einem JSKOS-Server
 ---------------------------------------------
 
 Dank guter Dokumentation ist der JSKOS-Server schnell aufgesetzt. Neben
-der JSKOS-Instanz selbst ist noch ein Mongo-DB-Server n√∂tig. Dieser wird
+der JSKOS-Instanz selbst ist noch ein Mongo-DB-Server nötig. Dieser wird
 entweder ebenfalls schnell selbst installiert oder es kann das ebenfalls
 angebotene Docker-Compose-File genutzt werden, das den JSKOS-Container
-inklusive eines Mongo-DB-Containers startet.[^7] Anschlie√üend m√ºssen
+inklusive eines Mongo-DB-Containers startet.[^7] Anschließend müssen
 lediglich mit folgenden Befehlen die schema-Datei und die concepts-Datei
 importiert werden.[^8]
 
     npm run import -- schemes ../data/imports/serlo/scheme.json
     npm run import -- concepts ../data/imports/concepts.ndjson
 
-Wir aktualisieren anschlie√üend noch den Index mit folgendem Befehl:
+Wir aktualisieren anschließend noch den Index mit folgendem Befehl:
 
     npm run import -- --indexes
 
@@ -172,7 +172,7 @@ Als letzten Schritt muss nun noch die Konfiguration in Cocoda angepasst
 werden, damit die Vokabulare vom JSKOS-Server von Cocoda erkannt werden.
 Die Konfiguration ist in der README.md des GitHub-Repositories
 dokumentiert.[^9] Mit folgendem JSON-Objekt wurde unsere lokale
-JSKOS-Instanz in der Konfigurationsdatei hinzugef√ºgt.
+JSKOS-Instanz in der Konfigurationsdatei hinzugefügt.
 
     {
         "provider": "ConceptApi",
@@ -194,10 +194,10 @@ JSKOS-Instanz in der Konfigurationsdatei hinzugef√ºgt.
         }
     }
 
-Die Mappings selbst k√∂nnen entweder lokal gespeichert werden oder auf
+Die Mappings selbst können entweder lokal gespeichert werden oder auf
 einem JSKOS-Server (oder beides). Hier sind beispielhaft zwei
 JSON-Objekte dargestellt, die einmal das lokale Mapping und das
-Einbinden einer JSKOS-Instanz f√ºr das Mapping zeigen:
+Einbinden einer JSKOS-Instanz für das Mapping zeigen:
 
 -   Lokales Speichern des Mappings:
 
@@ -251,42 +251,42 @@ Einbinden einer JSKOS-Instanz f√ºr das Mapping zeigen:
 Auf <https://hub.docker.com/r/coliconc/cocoda> wird beschrieben, wie der
 Service mit Docker einfach gestartet werden kann und die eigene
 Config-Datei eingebunden wird. Nach einem einfachen
-`docker-compose`` ``up` stand der Mapping-Service anschlie√üend zur
-Verf√ºgung.
+`docker-compose`` ``up` stand der Mapping-Service anschließend zur
+Verfügung.
 
-![Beispielhaftes Mapping der Konzepte Zahlenr√§ume (WirLernenOnline) auf
-Zahlen und Gr√∂√üen
+![Beispielhaftes Mapping der Konzepte Zahlenräume (WirLernenOnline) auf
+Zahlen und Größen
 (Serlo)](./media-folder/media/image4.png){width="5.833333333333333in"
 height="3.307309711286089in"}
 
-Beispielhaftes Mapping der Konzepte Zahlenr√§ume (WirLernenOnline) auf
-Zahlen und Gr√∂√üen (Serlo)
+Beispielhaftes Mapping der Konzepte Zahlenräume (WirLernenOnline) auf
+Zahlen und Größen (Serlo)
 
-Mapping der Themenb√§ume
+Mapping der Themenbäume
 -----------------------
 
-Am Hackathon selbst sind wir nicht mehr dazu gekommen, die Themenb√§ume
-auch tats√§chlich aufeinander zu mappen. Jedoch konnten wir zeigen, dass
-das Mapping nun auf einfache Weise m√∂glich w√§re, ohne dass Kenntnisse
-der Turtle-Syntax notwendig sind. In einem Mapping-Sprint k√∂nnten sich
-Fachredaktionen zusammenschlie√üen und ein Mapping verschiedener
-Themenb√§ume durchf√ºhren. Mit leichten Anpassugen in der
-Crawling-Infrastuktur w√§re es dann m√∂glich, dass beim Crawlen, sofern
-als Metadatum bereitgestellt, die Infos √ºber die Themenbaumeinordnung
-eines Materials erfasst wird. Aufgrund des Mapping k√∂nnte dann die
-Einordnung bei Serlo auf die Einordnung bei WirLernenOnline √ºbertragen
-werden. Nach dem Crawling w√ºrden die neu hinzugekommenen Materialien den
-Fachredaktionen als Vorschl√§ge f√ºr die Themen in ihren Fachportalen
+Am Hackathon selbst sind wir nicht mehr dazu gekommen, die Themenbäume
+auch tatsächlich aufeinander zu mappen. Jedoch konnten wir zeigen, dass
+das Mapping nun auf einfache Weise möglich wäre, ohne dass Kenntnisse
+der Turtle-Syntax notwendig sind. In einem Mapping-Sprint könnten sich
+Fachredaktionen zusammenschließen und ein Mapping verschiedener
+Themenbäume durchführen. Mit leichten Anpassungen in der
+Crawling-Infrastruktur wäre es dann möglich, dass beim Crawlen, sofern
+als Metadatum bereitgestellt, die Infos über die Themenbaumeinordnung
+eines Materials erfasst wird. Aufgrund des Mapping könnte dann die
+Einordnung bei Serlo auf die Einordnung bei WirLernenOnline übertragen
+werden. Nach dem Crawling würden die neu hinzugekommenen Materialien den
+Fachredaktionen als Vorschläge für die Themen in ihren Fachportalen
 angezeigt werden. Auf diese Weise wird ihnen das Einsortieren von neuen
 Materialien deutlich erleichtert. Die durch das Mapping neu gewonnenen
-Informationen k√∂nnen au√üerdem verwendet werden, um die Machine-Learning
+Informationen können außerdem verwendet werden, um die Machine-Learning
 Prozesse in der Redaktionsumgebung von WirLernenOnline zu verbessern.
 
 [^1]: https://www.w3.org/TR/skos-primer/
 
 [^2]: ` `s. https://skohub.io
 
-[^3]: ` https://dini-ag-kim.github.io/skos-einfuehrung/#/ f√ºr eine deutsche Einf√ºhrung in SKOS`
+[^3]: ` https://dini-ag-kim.github.io/skos-einfuehrung/#/ für eine deutsche Einführung in SKOS`
 
 [^4]: Turtle ist ein Serialisierungsformat des RDF-Datenmodells.
 

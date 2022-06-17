@@ -11,7 +11,7 @@ As happy as I was that it is an extension of the [W3C Verifiable Credentials Dat
 
 Those of you who clicked the above link to the [Europass Learning Model](https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/europass-learning-model/release/050) might have noticed that some links are giving 404 errors.
 That's something which can always happen.
-But it should maybe have been fixed for a model released over two years ago by the European Comission (maybe it wouldn't have happenend if there would be an engaging community maintaining it).
+But it should maybe have been fixed for a model released over two years ago by the European Commission (maybe it wouldn't have happened if there would be an engaging community maintaining it).
 
 But that aside.
 I wanted to see what kind of vocabularies are used in the model.
@@ -46,7 +46,7 @@ var xmlDoc = parser.parseFromString(txt, 'text/xml')
 
 Now we should be able to parse the document:  
 ``` js
-var res = xmlDoc.evaluate('//@targetFrameworlUrl', xmlDoc')
+var res = xmlDoc.evaluate('//@targetFrameworkUrl', xmlDoc')
 ```
 
 Let's check what we got with the `iterateNext()` method of the [`XPathResult`](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult) object  
