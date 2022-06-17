@@ -1,5 +1,5 @@
 ---
-title: "Sommercamp 2021"
+title: "JOINTLY Sommercamp 2021"
 date: "2021-08-01"
 ---
 
@@ -32,19 +32,15 @@ Einordnungen aufeinander gemappt würden, um Nutzer\*innen in beiden
 Systemen diese Einordnung als zusätzliche Information zur Verfügung
 stellen zu können.
 
-![Fachportale bei WirLernenOnline](/image1.png)
+![Fachportale bei WirLernenOnline](./image1.png)
 
 Fachportale bei WirLernenOnline
 
-![Taxonomie von Lehrplanthemen bei
-WirLernenOnline](./media-folder/media/image2.png){width="5.833333333333333in"
-height="4.14046697287839in"}
+![Taxonomie von Lehrplanthemen bei WirLernenOnline](./image2.png)
 
 Ausschnitt aus der Taxonomie von Lehrplanthemen bei WirLernenOnline
 
-![Themenbaum bei
-Serlo](./media-folder/media/image3.png){width="5.833333333333333in"
-height="5.329545056867891in"}
+![Themenbaum bei Serlo](./image3.png)
 
 Ausschnitt eines Themenbaums bei Serlo
 
@@ -201,8 +197,6 @@ Einbinden einer JSKOS-Instanz für das Mapping zeigen:
 
 -   Lokales Speichern des Mappings:
 
-<!-- -->
-
     {
         "provider": "LocalMappings",
         "uri": "http://coli-conc.gbv.de/registry/local-mappings",
@@ -224,8 +218,6 @@ Einbinden einer JSKOS-Instanz für das Mapping zeigen:
     }
 
 -   Speichern des Mappings auf einer JSKOS-Instanz
-
-<!-- -->
 
     {
         "provider": "MappingsApi",
@@ -254,10 +246,7 @@ Config-Datei eingebunden wird. Nach einem einfachen
 `docker-compose`` ``up` stand der Mapping-Service anschließend zur
 Verfügung.
 
-![Beispielhaftes Mapping der Konzepte Zahlenräume (WirLernenOnline) auf
-Zahlen und Größen
-(Serlo)](./media-folder/media/image4.png){width="5.833333333333333in"
-height="3.307309711286089in"}
+![Beispielhaftes Mapping der Konzepte Zahlenräume (WirLernenOnline) auf Zahlen und Größen(Serlo)](./image4.png)
 
 Beispielhaftes Mapping der Konzepte Zahlenräume (WirLernenOnline) auf
 Zahlen und Größen (Serlo)
@@ -284,9 +273,9 @@ Prozesse in der Redaktionsumgebung von WirLernenOnline zu verbessern.
 
 [^1]: https://www.w3.org/TR/skos-primer/
 
-[^2]: ` `s. https://skohub.io
+[^2]: s. https://skohub.io
 
-[^3]: ` https://dini-ag-kim.github.io/skos-einfuehrung/#/ für eine deutsche Einführung in SKOS`
+[^3]: https://dini-ag-kim.github.io/skos-einfuehrung/#/ für eine deutsche Einführung in SKOS
 
 [^4]: Turtle ist ein Serialisierungsformat des RDF-Datenmodells.
 
@@ -298,4 +287,4 @@ Prozesse in der Redaktionsumgebung von WirLernenOnline zu verbessern.
 
 [^8]: https://github.com/gbv/jskos-server\#data-import
 
-[^9]: ` `https://github.com/gbv/cocoda\#configuration
+[^9]: https://github.com/gbv/cocoda\#configuration

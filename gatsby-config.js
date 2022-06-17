@@ -13,14 +13,14 @@ module.exports = {
     During my studies I started working for the GWDG.`,
     author: {
       name: `Steffen Rörtgen`,
-      summary: `Hacking for Open Education, in love with metadata. Always learning.`
+      summary: `Hacking for Open Education, in love with metadata. Always learning.`,
     },
     social: {
       twitter: `steffenr42`,
       github: `sroertgen`,
       gitlab: `sroertgen`,
-      mail: `kontakt@steffen-roertgen.de`
-    }
+      mail: `kontakt@steffen-roertgen.de`,
+    },
   },
   pathPrefix: "/homepage",
   plugins: [
@@ -46,19 +46,25 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-image`,
     {
-        resolve: `gatsby-transformer-remark`,
-        options: {
-            plugins: [
-              `gatsby-remark-autolink-headers`,
-                {
-                    resolve: `gatsby-remark-prismjs`,
-                    options: {
-                    },
-                },
-            ],
-        },
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 630,
+            },
+          },
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+        ],
+      },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -66,4 +72,4 @@ module.exports = {
       },
     },
   ],
-}
+};
