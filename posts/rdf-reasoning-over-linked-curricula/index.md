@@ -31,7 +31,7 @@ The data was then loaded into the mapping tool "[Cocoda](https://coli-conc.gbv.d
   
 ![Mapping of data in Cocoda](./Mapping%20of%20Data%20in%20Cocoda.png)  
 
-## Reasoning in the mapped curricula.
+## Reasoning in the mapped curricula
 
 A service was then developed in the hackathon that loads the mappings from Cocoda (more precisely from the connected [JSKOS server](https://github.com/gbv/jskos-server)) into a triple store ([Apache Jena TDB](https://jena.apache.org/documentation/tdb/index.html) + [Fuseki](https://jena.apache.org/documentation/fuseki2/)). RDF technology enables so-called "reasoning", i.e. relationships between objects can be concluded even if they have not been explicitly defined.
 This is possible because `skos:exactMatch` [by definition](https://www.w3.org/TR/skos-reference/#L4186) is both symmetric and transitive. But what do symmetry and transitivity mean? A relation is symmetric if it is true in one direction as well as in the other: if A -> B, then also B -> A. An example: If A is related to B, then B is also related to A.
@@ -64,6 +64,7 @@ After integrating the service into the metadata dialog of the edu-sharing reposi
 ## PoC successful
 
 The PoC has thus been successful. The workshop generated many interesting discussion topics that now need to be addressed:
+
 - Who can do an appropriate mapping?
 - How do we get the countries' curricula in a machine-readable format?
 - What UX concepts are needed if an appropriate service is set up?
@@ -78,7 +79,6 @@ Internationally, ["Wikimedia Education"](https://www.wikidata.org/wiki/Wikidata:
 ![Mesh approach](./mapping_mesh_approach.png)
 
 The approach planned in the PoC is in principle transferable to other models and standards as long as the data is mapped in an RDF-compliant way. In addition, the question of whether there will be a central topic / competence tree on which the countries can agree for mapping ("star approach") or whether there could rather be mapping between the countries ("federation approach") is particularly exciting. In general, the question of who can carry out such a mapping needs to be addressed. However, in order to provide cross-cutting educational services, it will be necessary to pursue these approaches further to provide users with better search and navigation experiences.
-
 
 ## German version
 
