@@ -22,14 +22,14 @@ In the context of the workshop the following scenario should be prototypically i
 Now a learning material **subject A** from Bavaria is assigned. The material, which has only been assigned to the Bavarian curriculum topic, should then also become findable when searching in the WLO topic tree or the Berlin curriculum.
 This reflects the situation where there is an overarching service that wants to make learning materials findable and at the same time allows searching or navigating across curricula.
 
-![Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen](./Zuordnung%20Lernmaterial%20und%20Verkn%C3%BCpfung%20von%20Lehrplanthemen.png)
+![Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen](./linking_resources_and_curricula.png)
 
 ## Mapping the curricula with Cocoda
 
 To accomplish this, machine-readable representations of the curricula were first to be created. These could either be crawled or converted from other data formats into the "curricula group" model. Since curricula are not published in machine-readable formats, this process is very tedious. In some cases, only relevant parts of a curriculum were captured to serve the workshop use case.
 The data was then loaded into the mapping tool "[Cocoda](https://coli-conc.gbv.de/cocoda/)". Cocoda is a tool from the library field and allows to create and manage mappings between knowledge organization systems such as classifications, standards files and thesauri in the form of a web application (see also [article from last summercamp](../2021-08-01/).
   
-![Mapping of data in Cocoda](./Mapping%20of%20Data%20in%20Cocoda.png)  
+![Mapping of data in Cocoda](./mapping_cocoda.png)  
 
 ## Reasoning in the mapped curricula
 
@@ -102,14 +102,14 @@ Im Rahmen des Workshops sollte nun folgendes Szenario prototypisch umgesetzt wer
 Nun wird ein Lernmaterial **Thema A** aus Bayern zugeordnet. Das Material, das lediglich dem bayerischen Lehrplanthema zugeordnet wurde, soll dann auch auffindbar werden, wenn in dem WLO-Themenbaum oder dem Berliner Lehrplan gesucht wird.
 Damit wird die Situation widergespiegelt, in dem es einen übergreifenden Service gibt, der Lernmaterialien auffindbar machen möchte und gleichzeitig eine Suche oder Navigation über Lehrpläne ermöglicht.
 
-![Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen](./Zuordnung%20Lernmaterial%20und%20Verkn%C3%BCpfung%20von%20Lehrplanthemen.png)
+![Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen](./linking_resources_and_curricula.png)
 
 ## Mapping der Lehrpläne mit Cocoda
 
 Um dies zu bewerkstelligen wurden zunächst maschinenlesbare Repräsentationen der Lehrpläne angefertigt. Diese konnten entweder gecrawlt werden oder aus anderen Datenformaten in das Modell der “Curricula-Gruppe” konvertiert werden. Da die Lehrpläne nicht in maschinenlesbaren Formaten veröffentlicht werden, ist dieser Vorgang sehr mühselig. Teilweise wurden nur relevante Teilbereiche eines Lehrplans erfasst, um den Use-Case des Workshops bedienen zu können.
 Anschließend wurden die Daten in das Mapping-Tool “[Cocoda](https://coli-conc.gbv.de/cocoda/)” geladen. Cocoda ist ein Tool aus dem Bibliotheksbereich und ermöglicht es in Form einer Web­anwendung Mappings zwischen Wissens­organisations­systemen wie Klassifikationen, Norm­dateien und Thesauri herzustellen und zu verwalten (siehe auch den [Artikel vom letzten Sommercamp](../2021-08-01/)).
   
-![Mapping von Daten in Cocoda](./Mapping%20von%20Daten%20in%20Cocoda.png)  
+![Mapping von Daten in Cocoda](./mapping_cocoda.png)  
 
 ## Reasoning in den gemappten Lehrplänen
 
