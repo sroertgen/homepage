@@ -61,11 +61,72 @@ The Learning Resource Metadata Initiative (LRMI) also uses RDF as its basic data
 <p>In the context of the workshop the following scenario should be prototypically implemented: A teacher assigns a material to "<strong>Topic A</strong>" in the Bavarian curriculum. Now "<strong>Topic A" from Bavaria</strong> is linked to "<strong>Topic B" from Berlin</strong>. Furthermore, "<strong>Topic C</strong>" of the WLO topic tree is linked to "<strong>Topic B</strong>" from Berlin. It is assumed that the relationship of the topics matches the definition of <code class="language-text">skos:exactMatch</code>. That is, the topics are exactly the same, in the sense that they can be easily exchanged for each other.
 Now a learning material <strong>subject A</strong> from Bavaria is assigned. The material, which has only been assigned to the Bavarian curriculum topic, should then also become findable when searching in the WLO topic tree or the Berlin curriculum.
 This reflects the situation where there is an overarching service that wants to make learning materials findable and at the same time allows searching or navigating across curricula.</p>
-<p><img src="./Zuordnung%20Lernmaterial%20und%20Verkn%C3%BCpfung%20von%20Lehrplanthemen.png" alt="Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 442px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/a841318c4d84d92f819aff88b4dade24/e03bf/linking_resources_and_curricula.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 101.8987341772152%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsSAAALEgHS3X78AAABrUlEQVQ4y5VSa0/CQBD0//8RExODNZpgIip+AUkKtD6QapGCAr1y7dHrE+jVoTUWQ2LaybYf9mZu93bnKE3TKI4Yd3jg8tD1Ii6ESMvhCN/M+pRHrZd5v2c86DMty4uyYmu1aMj1e6Vxr16bzmwnFaXFJps3uvUbuX6nXC0qiUUiNOP1g759uh/vZECcBVquUHkDrDfMYdpQAyaTSRAEZcVAkiTUps1m80ySFEWxbRuZKmJKdV1vt1vj8di2aQUx4Ps+pba1xCW0QtsiB9wSBpzO4jiuYJJfV4iYu+qJEElZ8Xq9djKYZOkz4j2diKSKmGUgFoWYq8cVxPttJzFn6un/4n3/FAPDbsIw9LkbRdGOsYukiIyGIywFtPyKYlVYz3A47PX7hmGAcVgTydFoBAtNp9Oc8CPebreYWafTqdVqj48qW7khm3uDC+/1kr+c+/otHIy5dLtdSZJgYXgBnRYOgyVRU5ZleNt2nE3Ew8VzZA68L9U3NRBwOwgogMoQo/OibbwHetM08YdPcEboCjGdW4QyEPBUHBFCcsKfN+fNI4t/PtZsBb9xQEjTb0unhB7nUuPOAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen"
+        title="Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen"
+        src="/homepage/static/a841318c4d84d92f819aff88b4dade24/e03bf/linking_resources_and_curricula.png"
+        srcset="/homepage/static/a841318c4d84d92f819aff88b4dade24/c26ae/linking_resources_and_curricula.png 158w,
+/homepage/static/a841318c4d84d92f819aff88b4dade24/6bdcf/linking_resources_and_curricula.png 315w,
+/homepage/static/a841318c4d84d92f819aff88b4dade24/e03bf/linking_resources_and_curricula.png 442w"
+        sizes="(max-width: 442px) 100vw, 442px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <h2 id="mapping-the-curricula-with-cocoda" style="position:relative;"><a href="#mapping-the-curricula-with-cocoda" aria-label="mapping the curricula with cocoda permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mapping the curricula with Cocoda</h2>
 <p>To accomplish this, machine-readable representations of the curricula were first to be created. These could either be crawled or converted from other data formats into the "curricula group" model. Since curricula are not published in machine-readable formats, this process is very tedious. In some cases, only relevant parts of a curriculum were captured to serve the workshop use case.
 The data was then loaded into the mapping tool "<a href="https://coli-conc.gbv.de/cocoda/">Cocoda</a>". Cocoda is a tool from the library field and allows to create and manage mappings between knowledge organization systems such as classifications, standards files and thesauri in the form of a web application (see also <a href="../2021-08-01/">article from last summercamp</a>.</p>
-<p><img src="./Mapping%20of%20Data%20in%20Cocoda.png" alt="Mapping of data in Cocoda"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/d641ab089b20defd6c8889376e4db90c/66632/mapping_cocoda.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsSAAALEgHS3X78AAABjklEQVQozyVRDY+rIBD0//+2y93l2lqttqCIoBX5RlG5vu27SSAsyc7Mzma4uFbX6y3PKcZiGATnHUK4rqGkuOFdB58Eob5pJsaa+71FiGD85PzZ95nSepYqLEvctghn25wPkxDrGl+v1xKCUkpIaZ1Lv4n3PSXdyLmcJqNkBkz4gbq2nZ9Po2ZnVHjD79uWtj34N6AG3uM4wA55PAZC9DTpWWQz7yXrzJOvVkfvnJZSq2VdQHb1HpTf+t4z0qpZAOPvsb9Sgs+UUjYMvCMtOAEswTdlUV4u7/kZgyFHSnuMaF21p29yzdP/tj+k48iCd0YD6QS31Sr//Lz9/FSnU1fX9fl8/vjIv76q84Ui1BRFsMZbAwMH54KzGWsbdCvRrRhIOw+8QcgotYZwxCiFAEfTOMIDTJl5HmjXPu64rjhtvVYZo7Qqy7/AQJkxBgHBzEdKzrlxHCfIxhgwvFgLJeeDVMp5f+x75qylfS+EMNbGdaWEQM8Ki4oRcjbGQNQLLDJGCA9ywRA4IbA/aP4HfW/y0q2XAewAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Mapping of data in Cocoda"
+        title="Mapping of data in Cocoda"
+        src="/homepage/static/d641ab089b20defd6c8889376e4db90c/f058b/mapping_cocoda.png"
+        srcset="/homepage/static/d641ab089b20defd6c8889376e4db90c/c26ae/mapping_cocoda.png 158w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/6bdcf/mapping_cocoda.png 315w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/f058b/mapping_cocoda.png 630w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/40601/mapping_cocoda.png 945w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/78612/mapping_cocoda.png 1260w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/66632/mapping_cocoda.png 1504w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <h2 id="reasoning-in-the-mapped-curricula" style="position:relative;"><a href="#reasoning-in-the-mapped-curricula" aria-label="reasoning in the mapped curricula permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reasoning in the mapped curricula</h2>
 <p>A service was then developed in the hackathon that loads the mappings from Cocoda (more precisely from the connected <a href="https://github.com/gbv/jskos-server">JSKOS server</a>) into a triple store (<a href="https://jena.apache.org/documentation/tdb/index.html">Apache Jena TDB</a> + <a href="https://jena.apache.org/documentation/fuseki2/">Fuseki</a>). RDF technology enables so-called "reasoning", i.e. relationships between objects can be concluded even if they have not been explicitly defined.
 This is possible because <code class="language-text">skos:exactMatch</code> <a href="https://www.w3.org/TR/skos-reference/#L4186">by definition</a> is both symmetric and transitive. But what do symmetry and transitivity mean? A relation is symmetric if it is true in one direction as well as in the other: if A -> B, then also B -> A. An example: If A is related to B, then B is also related to A.</p>
@@ -323,11 +384,72 @@ Die Learning Resource Metadata Initiative (LRMI) verwendet ebenfalls RDF als gru
 <p>Im Rahmen des Workshops sollte nun folgendes Szenario prototypisch umgesetzt werden: Eine Lehrerin ordnet im bayerischen Lehrplan ein Material einem “<strong>Thema A</strong>” zu. Nun wird “<strong>Thema A” aus Bayern</strong> mit “<strong>Thema B” aus Berlin</strong> verknüpft. Außerdem wird “<strong>Thema C</strong>” des WLO-Themenbaums mit dem “<strong>Thema B</strong>” aus Berlin verknüpft. Dabei wird angenommen, dass die Beziehung der Themen der Definition von <code class="language-text">skos:exactMatch</code> entspricht. D.h. die Themen sind genau gleich, in dem Sinne, dass sie problemlos gegeneinander ausgetauscht werden können.
 Nun wird ein Lernmaterial <strong>Thema A</strong> aus Bayern zugeordnet. Das Material, das lediglich dem bayerischen Lehrplanthema zugeordnet wurde, soll dann auch auffindbar werden, wenn in dem WLO-Themenbaum oder dem Berliner Lehrplan gesucht wird.
 Damit wird die Situation widergespiegelt, in dem es einen übergreifenden Service gibt, der Lernmaterialien auffindbar machen möchte und gleichzeitig eine Suche oder Navigation über Lehrpläne ermöglicht.</p>
-<p><img src="./Zuordnung%20Lernmaterial%20und%20Verkn%C3%BCpfung%20von%20Lehrplanthemen.png" alt="Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 442px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/a841318c4d84d92f819aff88b4dade24/e03bf/linking_resources_and_curricula.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 101.8987341772152%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsSAAALEgHS3X78AAABrUlEQVQ4y5VSa0/CQBD0//8RExODNZpgIip+AUkKtD6QapGCAr1y7dHrE+jVoTUWQ2LaybYf9mZu93bnKE3TKI4Yd3jg8tD1Ii6ESMvhCN/M+pRHrZd5v2c86DMty4uyYmu1aMj1e6Vxr16bzmwnFaXFJps3uvUbuX6nXC0qiUUiNOP1g759uh/vZECcBVquUHkDrDfMYdpQAyaTSRAEZcVAkiTUps1m80ySFEWxbRuZKmJKdV1vt1vj8di2aQUx4Ps+pba1xCW0QtsiB9wSBpzO4jiuYJJfV4iYu+qJEElZ8Xq9djKYZOkz4j2diKSKmGUgFoWYq8cVxPttJzFn6un/4n3/FAPDbsIw9LkbRdGOsYukiIyGIywFtPyKYlVYz3A47PX7hmGAcVgTydFoBAtNp9Oc8CPebreYWafTqdVqj48qW7khm3uDC+/1kr+c+/otHIy5dLtdSZJgYXgBnRYOgyVRU5ZleNt2nE3Ew8VzZA68L9U3NRBwOwgogMoQo/OibbwHetM08YdPcEboCjGdW4QyEPBUHBFCcsKfN+fNI4t/PtZsBb9xQEjTb0unhB7nUuPOAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen"
+        title="Zuordnung Lernmaterial und Verknüpfung von Lehrplanthemen"
+        src="/homepage/static/a841318c4d84d92f819aff88b4dade24/e03bf/linking_resources_and_curricula.png"
+        srcset="/homepage/static/a841318c4d84d92f819aff88b4dade24/c26ae/linking_resources_and_curricula.png 158w,
+/homepage/static/a841318c4d84d92f819aff88b4dade24/6bdcf/linking_resources_and_curricula.png 315w,
+/homepage/static/a841318c4d84d92f819aff88b4dade24/e03bf/linking_resources_and_curricula.png 442w"
+        sizes="(max-width: 442px) 100vw, 442px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <h2 id="mapping-der-lehrpläne-mit-cocoda" style="position:relative;"><a href="#mapping-der-lehrpl%C3%A4ne-mit-cocoda" aria-label="mapping der lehrpläne mit cocoda permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mapping der Lehrpläne mit Cocoda</h2>
 <p>Um dies zu bewerkstelligen wurden zunächst maschinenlesbare Repräsentationen der Lehrpläne angefertigt. Diese konnten entweder gecrawlt werden oder aus anderen Datenformaten in das Modell der “Curricula-Gruppe” konvertiert werden. Da die Lehrpläne nicht in maschinenlesbaren Formaten veröffentlicht werden, ist dieser Vorgang sehr mühselig. Teilweise wurden nur relevante Teilbereiche eines Lehrplans erfasst, um den Use-Case des Workshops bedienen zu können.
 Anschließend wurden die Daten in das Mapping-Tool “<a href="https://coli-conc.gbv.de/cocoda/">Cocoda</a>” geladen. Cocoda ist ein Tool aus dem Bibliotheksbereich und ermöglicht es in Form einer Web­anwendung Mappings zwischen Wissens­organisations­systemen wie Klassifikationen, Norm­dateien und Thesauri herzustellen und zu verwalten (siehe auch den <a href="../2021-08-01/">Artikel vom letzten Sommercamp</a>).</p>
-<p><img src="./Mapping%20von%20Daten%20in%20Cocoda.png" alt="Mapping von Daten in Cocoda"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/d641ab089b20defd6c8889376e4db90c/66632/mapping_cocoda.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsSAAALEgHS3X78AAABjklEQVQozyVRDY+rIBD0//+2y93l2lqttqCIoBX5RlG5vu27SSAsyc7Mzma4uFbX6y3PKcZiGATnHUK4rqGkuOFdB58Eob5pJsaa+71FiGD85PzZ95nSepYqLEvctghn25wPkxDrGl+v1xKCUkpIaZ1Lv4n3PSXdyLmcJqNkBkz4gbq2nZ9Po2ZnVHjD79uWtj34N6AG3uM4wA55PAZC9DTpWWQz7yXrzJOvVkfvnJZSq2VdQHb1HpTf+t4z0qpZAOPvsb9Sgs+UUjYMvCMtOAEswTdlUV4u7/kZgyFHSnuMaF21p29yzdP/tj+k48iCd0YD6QS31Sr//Lz9/FSnU1fX9fl8/vjIv76q84Ui1BRFsMZbAwMH54KzGWsbdCvRrRhIOw+8QcgotYZwxCiFAEfTOMIDTJl5HmjXPu64rjhtvVYZo7Qqy7/AQJkxBgHBzEdKzrlxHCfIxhgwvFgLJeeDVMp5f+x75qylfS+EMNbGdaWEQM8Ki4oRcjbGQNQLLDJGCA9ywRA4IbA/aP4HfW/y0q2XAewAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Mapping von Daten in Cocoda"
+        title="Mapping von Daten in Cocoda"
+        src="/homepage/static/d641ab089b20defd6c8889376e4db90c/f058b/mapping_cocoda.png"
+        srcset="/homepage/static/d641ab089b20defd6c8889376e4db90c/c26ae/mapping_cocoda.png 158w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/6bdcf/mapping_cocoda.png 315w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/f058b/mapping_cocoda.png 630w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/40601/mapping_cocoda.png 945w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/78612/mapping_cocoda.png 1260w,
+/homepage/static/d641ab089b20defd6c8889376e4db90c/66632/mapping_cocoda.png 1504w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <h2 id="reasoning-in-den-gemappten-lehrplänen" style="position:relative;"><a href="#reasoning-in-den-gemappten-lehrpl%C3%A4nen" aria-label="reasoning in den gemappten lehrplänen permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reasoning in den gemappten Lehrplänen</h2>
 <p>Es wurde anschließend im Hackathon ein Service entwickelt, der die Mappings von Cocoda (genauer gesagt vom angeschlossenen <a href="https://github.com/gbv/jskos-server">JSKOS-Server</a>) in einen Triple-Store (<a href="https://jena.apache.org/documentation/tdb/index.html">Apache Jena TDB</a> + <a href="https://jena.apache.org/documentation/fuseki2/">Fuseki</a>) lädt. Die RDF-Technologie ermöglicht dabei sogenanntes “Reasoning”, d.h. Beziehungen zwischen Objekten können geschlossen werden, auch wenn sie nicht explizit definiert wurden.
 Das ist möglich, weil <code class="language-text">skos:exactMatch</code> <a href="https://www.w3.org/TR/skos-reference/#L4186">per Definition</a> sowohl symmetrisch als auch transitiv ist. Aber was bedeuten Symmetrie und Transitivität? Symmetrisch ist ein Beziehung, wenn sie sowohl in die eine, als auch in die andere Richtung gilt: Wenn A -> B, dann auch B -> A. Ein Beispiel: Wenn A verwandt ist mit B, dann ist auch B mit A verwandt.</p>
