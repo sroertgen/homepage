@@ -3,9 +3,9 @@ title: "RDF-Reasoning over Linked Curricula"
 date: "2022-10-12"
 ---
 
-Scroll down for german version:
+*Scroll down for [german version](#german-version)*
 
-How can the curricula of the states of Germandy be linked? And why is this necessary at all? In the workshop "[Linked Curricula](https://docs.google.com/presentation/d/1TLzJLieeN273sdlJ_da5FwdVP12ZhPDV742oZDHbTzo/edit#slide=id.p)" we addressed these questions at this year's OER and IT Summer Camp in Weimar.
+How can the curricula of the states of Germany be linked? And why is this necessary at all? In the workshop "[Linked Curricula](https://docs.google.com/presentation/d/1TLzJLieeN273sdlJ_da5FwdVP12ZhPDV742oZDHbTzo/edit#slide=id.p)" we addressed these questions at this year's OER and IT Summer Camp in Weimar.
 
 ## Starting point
 
@@ -82,7 +82,7 @@ The approach planned in the PoC is in principle transferable to other models and
 
 ## German version
 
-## RDF-Reasoning over Linked Curricula
+## RDF-Reasoning und vernetzte Lehrpläne
 
 Wie können die Curricula der Länder miteinander vernetzt werden? Und warum ist das überhaupt notwendig? Im Workshop “[Vernetzte Curricula](https://docs.google.com/presentation/d/1TLzJLieeN273sdlJ_da5FwdVP12ZhPDV742oZDHbTzo/edit#slide=id.p)” haben wir uns auf dem diesjährigen OER- und IT-Sommercamp in Weimar diesen Fragestellungen gewidmet.
 (Hinweis: Die Begriffe "Lehrplan" und "Curriculum" werden in diesem Artikel synonym verwendet)
