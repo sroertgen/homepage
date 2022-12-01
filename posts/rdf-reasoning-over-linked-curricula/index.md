@@ -5,7 +5,7 @@ date: "2022-10-12"
 
 *Scroll down for [german version](#german-version)*
 
-How can the curricula of the states of Germany be linked? And why is this necessary at all? In the workshop "[Linked Curricula](https://docs.google.com/presentation/d/1TLzJLieeN273sdlJ_da5FwdVP12ZhPDV742oZDHbTzo/edit#slide=id.p)" we addressed these questions at this year's OER and IT Summer Camp in Weimar.
+How can the curricula of the states of Germany be linked? And what does this enable us to do? In the workshop "[Linked Curricula](https://docs.google.com/presentation/d/1TLzJLieeN273sdlJ_da5FwdVP12ZhPDV742oZDHbTzo/edit#slide=id.p)" we addressed these questions at this year's OER and IT Summer Camp in Weimar.
 
 ## Starting point
 
@@ -84,12 +84,12 @@ The approach planned in the PoC is in principle transferable to other models and
 
 ## RDF-Reasoning und vernetzte Lehrpläne
 
-Wie können die Curricula der Länder miteinander vernetzt werden? Und warum ist das überhaupt notwendig? Im Workshop “[Vernetzte Curricula](https://docs.google.com/presentation/d/1TLzJLieeN273sdlJ_da5FwdVP12ZhPDV742oZDHbTzo/edit#slide=id.p)” haben wir uns auf dem diesjährigen OER- und IT-Sommercamp in Weimar diesen Fragestellungen gewidmet.
+Wie können die Curricula der Länder miteinander vernetzt werden? Und was ermöglicht uns so eine Verlinkung? Im Workshop “[Vernetzte Curricula](https://docs.google.com/presentation/d/1TLzJLieeN273sdlJ_da5FwdVP12ZhPDV742oZDHbTzo/edit#slide=id.p)” haben wir uns auf dem diesjährigen OER- und IT-Sommercamp in Weimar diesen Fragestellungen gewidmet.
 (Hinweis: Die Begriffe "Lehrplan" und "Curriculum" werden in diesem Artikel synonym verwendet)
 
 ## Ausgangslage
 
-Die Lehrpläne bilden für Lehrer*innen die Arbeitsgrundlage und definieren, welche Lernziele und Kompetenzen Schüler*innen zu bestimmten Zeitpunkten erreichen müssen. Lehrer*innen kennen sich daher in ihren eigenen Curricula sehr gut aus und wollen ihre Materialien gerne direkt spezifischen Themen in ihrem Curriculum zuordnen. Außerdem wollen sie auch direkt in ihrem jeweiligen Fachlehrplan suchen können. Bei der Bereitstellung übergreifender Services, wie es beispielsweise WirLernenOnline tut, stellt sich daher die Herausforderung, wie kann mit den 16 verschiedenen Lehrplänen der Länder umgegangen werden, um entsprechende Services bereitstellen zu können?
+Die Lehrpläne bilden für Lehrer\*innen die Arbeitsgrundlage und definieren, welche Lernziele und Kompetenzen Schüler*innen zu bestimmten Zeitpunkten erreichen müssen. Lehrer*innen kennen sich daher in ihren eigenen Curricula sehr gut aus und wollen ihre Materialien gerne direkt spezifischen Themen in ihrem Curriculum zuordnen. Außerdem wollen sie auch direkt in ihrem jeweiligen Fachlehrplan suchen können. Bei der Bereitstellung übergreifender Services, wie es beispielsweise WirLernenOnline tut, stellt sich daher die Herausforderung, wie kann mit den 16 verschiedenen Lehrplänen der Länder umgegangen werden, um entsprechende Services bereitstellen zu können?
 
 > Hypothese: Es gibt inhaltliche Überschneidungen zwischen den verschiedenen Lehrplänen der Länder  
 
