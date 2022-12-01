@@ -29,7 +29,7 @@ module.exports = {
       options: {
         custom: {
           families: ["Fira Sans", "Playfair Display"],
-          urls: ["/fonts/fonts.css"],
+          urls: ["/homepage/fonts/fonts.css"],
         },
       },
     },
