@@ -22,8 +22,17 @@ module.exports = {
       mail: `kontakt@steffen-roertgen.de`,
     },
   },
-  pathPrefix: "/homepage",
+  pathPrefix: "/public",
   plugins: [
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Fira Sans", "Playfair Display"],
+          urls: ["/fonts/fonts.css"],
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
