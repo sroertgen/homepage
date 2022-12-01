@@ -63,12 +63,15 @@ export default function About({ data }) {
           philosophy and dogs. I studied latin and philosophy in Göttingen and
           am holding a M.Ed. During my studies I started working for the{" "}
           <a href="https://gwdg.de">GWDG</a> and was able to broaden my
-          knowledge in the field in computer science. Currently I'm working in
-          the project <a href="https://jointly.info">JOINLTY</a>, which is
-          concerned with Open Educational Resources. I'm working in the
-          technological part of this topic and am especially interested in
-          metadata and making OER accessible and editable with Open Web
-          technologies.
+          knowledge in the field in computer science. By now I switched to the{" "}
+          <a href="https://hbz-nrw.de">hbz</a> and am working there as a web
+          developer with a focus on <a href="https://skohub.io">SkoHub</a>. I
+          have worked in the projects <a href="https://jointly.info">JOINLTY</a>{" "}
+          and <a href="https://wirlernenonline.de">WirLernenOnline</a>, which
+          are concerned with Open Educational Resources. I'm mostly working
+          around metadata architectures and am especially interested in making
+          OER and Curricula data accessible and editable with Open Web
+          technologies, especially RDF.
         </p>
       </div>
     </Layout>
