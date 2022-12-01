@@ -22,7 +22,7 @@ module.exports = {
       mail: `kontakt@steffen-roertgen.de`,
     },
   },
-  pathPrefix: "/public",
+  pathPrefix: "/homepage",
   plugins: [
     {
       resolve: "gatsby-plugin-web-font-loader",
