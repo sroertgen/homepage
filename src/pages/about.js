@@ -1,8 +1,8 @@
 import React from "react";
 import { css } from "@emotion/react";
 import Layout from "../components/layout";
-import { FaGithub, FaGitlab, FaTwitter, FaEnvelope } from "react-icons/fa";
-import photo from "../assets/photo.jpg";
+import { FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
+import photo from "../assets/photo.png";
 import { graphql } from "gatsby";
 import { rhythm } from "../utils/typography";
 
@@ -41,12 +41,6 @@ export default function About({ data }) {
             href={`https://github.com/${data.site.siteMetadata.social.github}`}
           >
             <FaGithub className="react-icons" />
-          </a>
-          <a
-            target="_blank"
-            href={`https://gitlab.com/${data.site.siteMetadata.social.gitlab}`}
-          >
-            <FaGitlab className="react-icons" />
           </a>
           <a
             target="_blank"
