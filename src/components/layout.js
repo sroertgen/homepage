@@ -53,7 +53,7 @@ export default function Layout({ children }) {
         >
           About
         </Link>
-        <Link
+        {/* <Link
           activeClassName="active"
           to={`/projects/`}
           css={css`
@@ -62,7 +62,7 @@ export default function Layout({ children }) {
           `}
         >
           Projects
-        </Link>
+        </Link> */}
         <a className="icon" onClick={toggleTopnav}>
           <div id="menuicon" className="react-icons">
             <FaBars className="react-icons" />
