@@ -3,12 +3,15 @@ title: "NOSTR - Experimenting with Relays and nostr-tools"
 date: "2023-03-11"
 ---
 
+**TL;DR**: Meine Erfahrungen beim Aufsetzen eines NOSTR-Relays auf Basis von [`nostream`](https://github.com/Cameri/nostream) und erste Interaktionen mit [`nostr-tools`](https://github.com/nbd-wtf/nostr-tools)
+
 [NOSTR](https://nostr.com/) ist ein dezentrales soziales Netzwerk und hat einiges an Aufmerksamkeit gewonnen, nachdem Elon Musk nicht nur das Posten von Mastodon Handles, sondern unter anderem auch von NOSTR Keys verbot.
 
 > "Specifically, we will remove accounts created solely for the purpose of promoting other social platforms and content that contains links or usernames for the following platforms: Facebook, Instagram, Mastodon, Truth Social, Tribel, Nostr and Post."
 
 Mittlerweile ist der Tweet gelöscht worden und nicht mehr verfügbar, in dem Elon dies ankündigte, aber das Web Archive vergisst glücklicherweise nicht: https://web.archive.org/web/20221218173806/https://help.twitter.com/en/rules-and-policies/social-platforms-policy
-Dies mag auch daran liegen, dass Jack Dorsey kurze Zeit vorher 14 Bitcoin an [@fiatjaf](https://twitter.com/fiatjaf) spendete, um die Entwicklung von NOSTR zu fördern.
+
+Die Aufmerksamkeit Elons auf diesem noch sehr jungen Protokoll mag auch daran liegen, dass Jack Dorsey kurze Zeit vorher 14 Bitcoin an [@fiatjaf](https://twitter.com/fiatjaf) spendete, um die Entwicklung von NOSTR zu fördern.
 
 Das soll aber nicht noch eine "Was ist NOSTR"-Einführung werden (dafür gerne auch hier schauen: https://nostr-resources.com/), sondern ich möchte kurz von meinen Erfahrungen beim Einrichten eines Relays sowie den ersten Interaktionen damit berichten.
 
