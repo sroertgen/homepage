@@ -3,7 +3,7 @@ title: "NOSTR - Experimenting with Relays and nostr-tools"
 date: "2023-03-11"
 ---
 
-**TL;DR**: Meine Erfahrungen beim Aufsetzen eines NOSTR-Relays auf Basis von [`nostream`](https://github.com/Cameri/nostream) und erste Interaktionen mit [`nostr-tools`](https://github.com/nbd-wtf/nostr-tools)
+**TL;DR**: Meine Erfahrungen beim Aufsetzen eines NOSTR-Relays auf Basis von [`nostream`](https://github.com/Cameri/nostream) und erste Interaktionen mit [`nostr-tools`](https://github.com/nbd-wtf/nostr-tools). Fazit: Super easy aufzusetzen und aufgrund des simplen Protokolls einfache Entwicklung von Clients möglich! 🥳
 
 [NOSTR](https://nostr.com/) ist ein dezentrales soziales Netzwerk und hat einiges an Aufmerksamkeit gewonnen, nachdem Elon Musk nicht nur das Posten von Mastodon Handles, sondern unter anderem auch von NOSTR Keys verbot.
 
