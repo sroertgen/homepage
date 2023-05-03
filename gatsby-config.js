@@ -20,6 +20,7 @@ module.exports = {
       github: `sroertgen`,
       gitlab: `sroertgen`,
       mail: `kontakt@steffen-roertgen.de`,
+      npub: `npub1r30l8j4vmppvq8w23umcyvd3vct4zmfpfkn4c7h2h057rmlfcrmq9xt9ma`
     },
   },
   pathPrefix: "/homepage",

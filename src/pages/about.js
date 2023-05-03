@@ -5,6 +5,7 @@ import { FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
 import photo from "../assets/photo.png";
 import { graphql } from "gatsby";
 import { rhythm } from "../utils/typography";
+import Nostr from "../assets/nostr_logo_blk.svg"
 
 export default function About({ data }) {
   return (
@@ -36,6 +37,11 @@ export default function About({ data }) {
             alt="Steffen Rörtgen"
           />
           <h3>Steffen Rörtgen</h3>
+          <div css={css`
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          `}>
           <a
             target="_blank"
             href={`https://github.com/${data.site.siteMetadata.social.github}`}
@@ -51,6 +57,14 @@ export default function About({ data }) {
           <a href={`mailto:${data.site.siteMetadata.social.mail}`}>
             <FaEnvelope className="react-icons" />
           </a>
+          <a target="_blank" href={`https://iris.to/${data.site.siteMetadata.social.npub}`}>
+          <img
+              src={Nostr}
+              style={{ width: 36, margin: 0 }}
+              alt="nostr logo"
+            />
+          </a>
+          </div>
         </div>
         <p>
           Hello there! I like open web technologies, metadata, classic
@@ -82,6 +96,7 @@ export const query = graphql`
           gitlab
           twitter
           mail
+          npub
         }
         author {
           summary
