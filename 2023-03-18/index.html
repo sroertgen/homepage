@@ -48,7 +48,254 @@
         }
       }
     })
-  </script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="layout"><header class="topnav" id="myTopnav"><a href="/homepage/"><style data-emotion="css 1ea2tdw">.css-1ea2tdw{margin-bottom:2.88rem;display:inline-block;font-style:normal;font-size:1.5rem;}</style><h1 class="css-1ea2tdw">Hacking for Open Education</h1></a><style data-emotion="css tjo4qw">.css-tjo4qw{float:right;}</style><a class="css-tjo4qw" href="/homepage/about/">About</a><a class="icon"><div id="menuicon" class="react-icons"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="react-icons" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg></div></a></header><main><div><h1>Bitcoin Library - Educational Resources and Their Metadata as Actors on Nostr</h1><div><p>(englischer Titel, weil eine Übersetzung demnächst noch folgt...)</p>
+  </script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="layout"><header class="topnav" id="myTopnav"><a href="/homepage/"><style data-emotion="css 1ea2tdw">.css-1ea2tdw{margin-bottom:2.88rem;display:inline-block;font-style:normal;font-size:1.5rem;}</style><h1 class="css-1ea2tdw">Hacking for Open Education</h1></a><style data-emotion="css tjo4qw">.css-tjo4qw{float:right;}</style><a class="css-tjo4qw" href="/homepage/about/">About</a><a class="icon"><div id="menuicon" class="react-icons"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="react-icons" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg></div></a></header><main><div><h1>Bitcoin Library - Educational Resources and Their Metadata as Actors on Nostr</h1><div><p>(scroll down for <a href="#german-version">german-version</a>)</p>
+<p>As some of you know, I work in the field of Open Education.
+I am particularly interested in how communities can collect, annotate, and share educational materials in a decentralized way.
+Adrian Pohl and Felix Ostrowki proposed <a href="https://blog.skohub.io/2020-06-25-skohub-pubsub/">making vocabularies social actors</a> in 2020.
+In the <a href="https://skohub.io">SkoHub</a> project, they have designed and built tools for this purpose that allow controlled vocabularies to be easily published and made social actors based on the <a href="https://activitypub.rocks/">Activity Pub protocol</a>.
+This allows the attributes, such as keywords, that I use to mark up a resource to become social actors themselves that I can follow or interact with.</p>
+<p>The hackathon <a href="https://dorahacks.io/hackathon/hack-nostr-on">Hack-Nostr-On</a> inspired me to think this idea further and apply the approach to <a href="https://Nostr.com/">Nostr</a>.
+This has now resulted in a prototype, the <a href="https://github.com/bitcoin-library">"Bitcoin Library"</a>.</p>
+<h2 id="why-nostr" style="position:relative;"><a href="#why-nostr" aria-label="why nostr permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Why Nostr?</h2>
+<p>First of all: I think the ActivityPub approach and the <a href="https://en.wikipedia.org/wiki/Fediverse">Fediverse</a> are great.
+However, I can certainly imagine circumstances in which a censorship-resistant, far more decentralized educational resource network might become important.
+Namely, precisely when educational content is not desired by institutional (or even other authoritarian) sources.
+In this case, it is much easier to force centralized or even federated networks to cooperate and exclude actors or content from them.
+Operating Mastodon or other ActivityPub clients is much more complex than setting up a relay and represents a single point of failure in such a case.
+In addition, user accounts are lost when closing an ActivityPub instance, a subsequent migration is (to my knowledge) not possible, also all follower information is lost.
+This can't happen with Nostr by design, because all actors have a private key with which they can sign messages and send them to arbitrary relays.
+Even if relays are closed or certain users are excluded, the messages can simply be sent to and obtained from any other relays (as long as they were previously sent or mirrored there).</p>
+<h2 id="how-to-transfer-to-nostr" style="position:relative;"><a href="#how-to-transfer-to-nostr" aria-label="how to transfer to nostr permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to transfer to Nostr?</h2>
+<p>A transfer of the concept developed in SkoHub should be possible in a simple way.
+At this point, a short digression for those who have nothing to do with controlled vocabularies (<a href="https://dini-ag-kim.github.io/skos-einfuehrung/#/">SKOS (german introduction)</a>).</p>
+<h3 id="what-are-controlled-vocabularies" style="position:relative;"><a href="#what-are-controlled-vocabularies" aria-label="what are controlled vocabularies permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What are controlled vocabularies?</h3>
+<p>Controlled vocabularies are, simply put, nothing more than fixed lists of values.
+Any drop-down menu can also be called a controlled vocabulary.
+Now the innovative approach in SKOS, the Simple Knowledge Organization System, is that these vocabularies and their entries are tagged with a URL and can also be tagged with other metadata, such as relationships to build hierarchies, alternate labels, and other things.
+This makes it possible for the entry from a controlled vocabulary, to get its own "web page".
+For this purpose, for example, <a href="https://github.com/skohub-io/skohub-vocabs">SkoHub Vocabs</a> was developed.
+With the help of this tool, controlled vocabularies can be easily published on the web and get a URI that helps to interact with them.</p>
+<p>As an example, here is a vocabulary of subject groups and study areas in the field of higher education: <a href="https://w3id.org/kim/hochschulfaechersystematik/scheme">https://w3id.org/kim/hochschulfaechersystematik/scheme</a>.</p>
+<p>Now it gets particularly exciting because instead of the HTML page, I can also call a JSON representation of the data at the same link: <a href="https://w3id.org/kim/hochschulfaechersystematik/scheme.json">https://w3id.org/kim/hochschulfaechersystematik/scheme.json</a> (or via content-negotiation).
+This allows machines to easily interact with these vocabularies by reading information stored there.</p>
+<h3 id="how-does-this-help-when-building-a-decentralized-library-on-nostr" style="position:relative;"><a href="#how-does-this-help-when-building-a-decentralized-library-on-nostr" aria-label="how does this help when building a decentralized library on nostr permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How does this help when building a decentralized library on Nostr?</h3>
+<p>Dropdown menus, for example, can now be implemented in such a way that the data about possible values no longer has to be stored in the program code, but is fetched from the application via a URI of the vocabulary.
+This facilitates the separation of data and code.
+However, additional metadata about the controlled vocabularies can also be made available in this way, for example, a Nostr Public Key, next to the inbox of Activity Pub, making the entry in this controlled vocabulary itself an actor.
+Applications can then use this public key to interact with this entry.
+For example, they can send and share resources with this actor in the form of links.
+People, in turn, can also follow these entries on Nostr and be notified when this actor writes new notes and shares links to resources.</p>
+<p>This allows communities to form and organize, linking topic-based resources to such vocabulary entries, creating a knowledge graph that can in turn be used by other applications, such as a "library", to build a search engine over these community-annotated resources.</p>
+<h2 id="too-much-theory-show-me-something" style="position:relative;"><a href="#too-much-theory-show-me-something" aria-label="too much theory show me something permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Too much theory, show me something!</h2>
+<p>The prototype consists of three components:</p>
+<ul>
+<li>Metadata Editor (as a browser extension).</li>
+<li>Note-Fetcher</li>
+<li>Frontend</li>
+</ul>
+<h3 id="the-metadata-editor" style="position:relative;"><a href="#the-metadata-editor" aria-label="the metadata editor permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The metadata editor</h3>
+<p>As a first prototype and PoC, I reused something that was already developed at SkoHub, but unfortunately has since been shut down due to lack of resources: A browser extension that allows you to annotate the web page with metadata, which subsequently shares the resource as actors on Nostr.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/33367c01c10c80215e2789a8e274d17f/e185b/image1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 153.79746835443038%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAfCAYAAADnTu3OAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFE0lEQVRIx4WVSW9bVRiGs2EDbNImaZomdgbb9/rOk6+vr309NVNJQEUtiKqlERWqqIqERCUQoAoWSF2yYehAAbHjH4DEDwAELOkMgaosKpEKVDVtSPKgc2K7Q+pypVfn2JIfv9/3fufcnr4t2xHa1jfEY48P8vHeFF8ddhlR6uhmlUwuYELxyagBWbVANh8SRjV2P/M8e/a/TmXXIcLkafJmFc2q07OlbwChrf0DPNHbz6w9wMGGQtZKUIwC/dv7GBjeyvb0NgZTg2hOhncO1znz/iFee/tNnt83z87JCNUuoTkVevrSGm31j2o8MZRny6iN4VXJGSHbRgYZHh0inUmxYyJFo2Fw4qWQo7sd9u0p8cKcTblkoDllNLtCz7Zxk7YGJywGxw1GVQ/d3QAOpYcYy6bYkUkRRAZHDtY5dngvCwfmObi7SG96FNU1Mb0yeQE0i03ceBKr2MBPpjEKNTSvgu4kKGaR4bERUpkUQ5k0Ly3M88FbB3j5wDwvLDzLwrMRemBQTHx0J94AWlETPaiiehXyfpVxs4jqxLIf46qHoozy6oEZin6GY0f38+7xN/DtDM3JmFeeC9gz5xLXgrvAvJ9ghHUJ0ws1zLCO7id40RR2oUGp3ODIwosUCyFhMaExPYdq+mRVi1oSUwxDNDtAcyvk7TI9dtTELU/hlacQbr3KFLpflTAvmsSLplHdGobfQPfqaE6CXWiiezVyZgXFTsg7iYTJlHfkXIYVMXceqbzPcM4lrfq4xUnCyqxUlOwirMxQKM/Iz2I13GQj2Y4qGyVvTeXZIjSSR+x7h1WGsw6FeKY1OhGKWdqktqP22lZP/6jOvRLzKIBWUJdOhIJ4WjrzS1MUyrME5Y0/exB2P1AOts7WtMZI1pX9EyAhATf9moSIvdDD3D0SKNwELXcCpruJBIpVgB5Z8t2jtwEUJTthk2KyS5Ys1qg6J/fi+wdd/W8PhUO3uFM69FtlC8e6TLaC7j68XAmUKY+oUu29cChLjmdkue2kVSvuqGvJ4qRk7RJiFVL9ClkrksPbnsMN7ZKlyzZUZju93ORQC6rYpSZaUMMu7ZR7cVIkoPpUp3ciEMOvy9MiXHdNWWtdDDknlmdZOnUrjGUtcrqP6cboTkTeKpJVdAwtx5jidoCbShaXgYC2YQKuOmVyekFCVDNEFTeQFaNoDqahk8kH3R1aUUPeNu3VLDZkyZZUgmpGjCsuat5kXLxXjO6BSKDombhczZYEVLFjxrImlhdTiJsYdkAc5FGNAD+a7BpIK+VKK90ExS1LoBFU+fqbb/nxp5/57vsfuPLrIhcvL/Lrb4ss/v4Hx987wZgSdObyPqDomYQUauScMhkrotSYkz/+55+/uXPnDg8+p89+STrryeQ3AU3Zv6aUU2rK0Ymb8/xy7jxLS3+xvLzM+vo6q6urrK2tAet8dPIs6VwXYM4td954Q1mHgTEDI6hx8eJlbty4wcrKinQloELi+fjUZ92B4vz23nP0nhyckGNz6fIVlm4scfv27U3Aj05+3h2YsUuMqB7jRsiYkB7K1C9cuMTNmzdZW1vvwNYkb4VPT58klfUxvOThYyOGWrybxSqGPKzOcP78RZaXb3Ucit6ttoFnTnUH6oWqTDlIZuQrVIxOVH+Kc+cu8Oe1a1y9elU6/fff1RYWPvzkM0a7lSzSFeWK8RGwCatEUJ7i0qUr3Lp1i6WlJa5fv86dlRXWW15Pnfmi69j8ByZ6bnVOE4D/AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="image1"
+        title="image1"
+        src="/homepage/static/33367c01c10c80215e2789a8e274d17f/f058b/image1.png"
+        srcset="/homepage/static/33367c01c10c80215e2789a8e274d17f/c26ae/image1.png 158w,
+/homepage/static/33367c01c10c80215e2789a8e274d17f/6bdcf/image1.png 315w,
+/homepage/static/33367c01c10c80215e2789a8e274d17f/f058b/image1.png 630w,
+/homepage/static/33367c01c10c80215e2789a8e274d17f/e185b/image1.png 691w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>Here, for example, I annotated <a href="https://dergigi.com/2021/12/30/the-freedom-of-value/">Gigi's great Value4Value</a> article with the tool (available metadata, such as image, title, description and URL are automatically taken from the web page) and still annotated it with the metadata "article" as well as "V4V" (the entries come partly from the <a href="https://portal.einundzwanzig.space/de/library/library-item?l=de">Twenty-One Library</a>).</p>
+<p>After clicking "Publish" the metadata of the resource is shared as "Notes" by the bots on Nostr.
+The metadata about the resource is stored in a tag <code class="language-text">metadata</code> and can be used from there by other services.
+For example, an event looks like this:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">[</span>
+  <span class="token string">"EVENT"</span><span class="token punctuation">,</span>
+  <span class="token string">"0"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"bd000c944f40667b9cfc7f1d99e60f456de6f797aa39ebeb12113cac93cbb98c"</span><span class="token punctuation">,</span>
+    <span class="token property">"kind"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"pubkey"</span><span class="token operator">:</span> <span class="token string">"8af30833be407219d6a2d2a6a84d2cea7d3c212693090fcc2b110ca944c3a617"</span><span class="token punctuation">,</span>
+    <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token number">1682689537</span><span class="token punctuation">,</span>
+    <span class="token property">"content"</span><span class="token operator">:</span> <span class="token string">"Hello! A new resource with title \"Bitcoin Flyer in Swahili\" got added to the library!\n    https://blotcdn.com/blog_378314d0a9ec45bfa46b3bc7d3718410/_thumbnails/b0cefa01-8abe-42ed-89fe-d6a1e79b6e11/large.png\nAround 200 million people are speaking Swahili. Now they can learn and share the basics about Bitcoin with BFF's Bitcoin flyer..\nSent from Nostr:npub1j8wdpuqqct23l4gyyxa5dkjvgkxzkjh3n3mzzjj79uhcvh424pcqurytqu (Bitcoin Library).\n    "</span><span class="token punctuation">,</span>
+    <span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span>
+        <span class="token string">"p"</span><span class="token punctuation">,</span>
+        <span class="token string">"8af30833be407219d6a2d2a6a84d2cea7d3c212693090fcc2b110ca944c3a617"</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span>
+        <span class="token string">"metadata"</span><span class="token punctuation">,</span>
+        <span class="token string">"{\"id\":\"https://anitaposch.com/bitcoin-swahili\",\"name\":\"Bitcoin Flyer in Swahili\",\"description\":\"Around 200 million people are speaking Swahili. Now they can learn and share the basics about Bitcoin with BFF's Bitcoin flyer.\",\"image\":\"https://blotcdn.com/blog_378314d0a9ec45bfa46b3bc7d3718410/_thumbnails/b0cefa01-8abe-42ed-89fe-d6a1e79b6e11/large.png\",\"resourceType\":[{\"id\":0,\"checked\":true,\"title\":\"Artikel\",\"uri\":\"https://w3id.org/bitcoin-library/bots/f631971e-ee83-4c95-9fcf-b1c1639bb4f6\"}],\"keywords\":[{\"id\":1,\"title\":\"Allgemein Bitcoin\",\"uri\":\"https://w3id.org/bitcoin-library/bots/4e42c22d-0b45-4d8a-bb49-6d95d56e2558\",\"checked\":true}],\"authors\":[{\"name\":\"Anita Posch\",\"npub\":\"npub1tjkc9jycaenqzdc3j3wkslmaj4ylv3dqzxzx0khz7h38f3vc6mls4ys9w3\",\"id\":\"4EEmDu8x\"}],\"metadataContributor\":{\"name\":\"\",\"npub\":\"\"}}"</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"sig"</span><span class="token operator">:</span> <span class="token string">"b07b2db792ff8c90526e93695dbad1d030a45e4b3e4b64138d0a0aa24d53d5405bcca4a6d4c2231c2eae9b267a0366473c2d0eba63309c259adc7eb2b0a59190"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span></code></pre></div>
+<p>In the future, it should also be possible to send interesting notes directly to the bots, so that not only web resources, but also notes can be made findable in the search index.</p>
+<h3 id="the-note-fetcher" style="position:relative;"><a href="#the-note-fetcher" aria-label="the note fetcher permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The Note Fetcher</h3>
+<p>The "Note Fetcher" is, in a sense, the heart of the entire service, in that the classic ETL (Extract, Transform, Load) takes place there.
+Every five seconds, the "Note Fetcher" checks whether there are any new events.
+If there is a new event, it first checks whether the resource already exists in the search index.
+The URL is decisive and serves as the identifier of the resource.
+If the resource is not yet in the index, it is added there.</p>
+<p>However, if the resource already exists, the metadata is merged.
+This merging of metadata is an elementary part of the entire decentralized annotation concept.
+In a decentralized community-based approach, actors will inevitably annotate the same resources with different metadata sooner or later.
+For example, one assigns the resource to the "environment" topic, while another assigns it to the "mining" topic. A third may assign both attributes and still a third.</p>
+<p>In the long run, I assume that the attributes that fit best will be assigned most often, and thus a kind of "consensus" will emerge.
+More on this in the next section.</p>
+<p>The tagged metadata is then written to the search index and is then available in the search frontend.</p>
+<h3 id="the-frontend---the-bitcoin-library" style="position:relative;"><a href="#the-frontend---the-bitcoin-library" aria-label="the frontend   the bitcoin library permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The frontend - The Bitcoin Library</h3>
+<p>The frontend is a simple web application that queries, displays, makes searchable and filterable the metadata from the search index.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/8d1c893333e454ef1e6db55155ed803b/fb4e7/frontend.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 73.41772151898735%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpElEQVQoz32QS08TURiG+zO8QG1pO505Z2bOZe5zzplOO71RpKUCoYDcYgJqIMbLBiMJgRIX4sKFG40Lixs2GBJcKCQsCD9CE3+LhjYKdeHJm5N85ztP3u/9YqZfMf1KVvcHUngwhRMSVYmQoBNP43gap4GVgaYELVn3h2RrSDZTwAZYQCIUxGKQCEl1h0dbWzu7Wzu7j5+90AlbWVnb3n65udmempqTVVdGTDNyrbvLs4v3R5szimZnFJpVzZhKRUqxHj3d+NU933/8zCrGyelZr3zz9n1KIrLu54qNre2dTufj54ODVquVTCQG47d6zt7cwr3Tky9fvx2/+7CnIefV692jo8Ojo8MHq08kYMk6c8VwvdGsVisbGxvn5+ftdltV9RjADJDcaC0/N+45LMyonLHcwh2jXjGi0ELU1wgHmAPMrt8YsCzr+Pjk7Oys0+k0m+MxBXGNBjYfMXndD0cdUfVYxKOGX2hSNqJRrhGmYA4JTyaTyUT8+fr6p73O2urDRCIZUxDTaM70itQpUKcAMTesICzcDgsjPFe17KAHA8RuJuC1wUw6q8uQDmXgUAbGuiNxSC62jw22tLTcmppRZJUaDGIOMet9AJhN1PBYlfqeRS1HJQIQEfvTuxCivFiu7e/vzy8sZhWi0qD33o0mZifzpVLJD8peUDG8IrYLl7CCOTV9CKTF+el8VIaaDYn424UkMHndCxus0BDRmBvULmGIeVbnofCWW2YUYBW7iPKrQ6k0cIOaG9Sc7m3zKnGiK86IuaxYGG6Flel8ZZJaAUBXeCKoWyJ2hKw8wELWXAX5fbDj5cNiIygPs3CEGn3OAHPTLxMn6mVRdA8g1pcZGUKnjtCWMBKIsn/gq1J0H2Det22AuKQ5WJnIqkzB/4N7+g0Sdes+9uldVgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="frontend"
+        title="frontend"
+        src="/homepage/static/8d1c893333e454ef1e6db55155ed803b/f058b/frontend.png"
+        srcset="/homepage/static/8d1c893333e454ef1e6db55155ed803b/c26ae/frontend.png 158w,
+/homepage/static/8d1c893333e454ef1e6db55155ed803b/6bdcf/frontend.png 315w,
+/homepage/static/8d1c893333e454ef1e6db55155ed803b/f058b/frontend.png 630w,
+/homepage/static/8d1c893333e454ef1e6db55155ed803b/40601/frontend.png 945w,
+/homepage/static/8d1c893333e454ef1e6db55155ed803b/78612/frontend.png 1260w,
+/homepage/static/8d1c893333e454ef1e6db55155ed803b/fb4e7/frontend.png 1519w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>To visualize the tagged metadata, the tags are displayed with different "opacity".
+The less often a metadata has been tagged, the paler it is displayed.
+This is to make clear how often the metadatum was assigned.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 488px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/7762fd20d7a0d536725075e59a50844b/bd48c/tags.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 32.278481012658226%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA/UlEQVQY023Mu0rEQBSA4byEjc0GspvM5UzmkrllZiKKICsqLmizhY2FVhY2AWULH8BKbESw2gfVbFQUhZ/D4cB3shlp8oLkBS2qOi9oXtDJMAExj+t2DG3CPJCvMB/u2WTKQHVUhK3tGeaBqcj1zhSrEmzFfAmuGr74CiyqAxEdEem7DLh1VjgrjFFGSyEVokJbW6sWeFNLw4QG4UvSVMxT+RsvF+7lDj/3+G2F1g/lU8+ul3p1xU7m/nRuFofm7MjEFBDvqEw/5YAP9n1/KW4u5N5u69tgXOBN1C6CSryJY/CHfeLzY/d6jx9vwfg4hYR4wnyYZLOM/Ss/8Dv2L0xm/BAqDAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="tags"
+        title="tags"
+        src="/homepage/static/7762fd20d7a0d536725075e59a50844b/bd48c/tags.png"
+        srcset="/homepage/static/7762fd20d7a0d536725075e59a50844b/c26ae/tags.png 158w,
+/homepage/static/7762fd20d7a0d536725075e59a50844b/6bdcf/tags.png 315w,
+/homepage/static/7762fd20d7a0d536725075e59a50844b/bd48c/tags.png 488w"
+        sizes="(max-width: 488px) 100vw, 488px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h3 id="value-for-value" style="position:relative;"><a href="#value-for-value" aria-label="value for value permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Value For Value</h3>
+<p>Content creators, especially for educational materials, provide an invaluable service to society by making their materials available on the web.
+They often do so using <a href="https://creativecommons.org/licenses/?lang=en">Creative Commons licenses</a>, which allow others to use and remix the materials.
+This makes it easy to adapt and reuse the materials in a legally secure way.</p>
+<p>However, previous centralized platforms or even ActivityPub based networks such as Mastodon do not offer a way to give anything back to creators other than a "like".
+Nostr, through its proximity to the Bitcoin and Lightning networks, offers a solution to give something back directly to creators without intermediaries.</p>
+<p>But also those who provide the metadata can specify your Npub in the metadata editor.
+From there, as with content creators, if available, the <a href="https://github.com/lnurl/luds/blob/luds/16.md">LUD16</a> address is retrieved from the profile.
+This address can then be used to make a small donation with Alby (so it is not (yet) an implementation of <a href="https://github.com/Nostr-protocol/nips/blob/master/57.md">NIP-57</a>).</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 524px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/homepage/static/0900b390a1bee8a0b4e3963560d23b5f/664c8/zap.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 147.46835443037975%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,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'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="zap"
+        title="zap"
+        src="/homepage/static/0900b390a1bee8a0b4e3963560d23b5f/664c8/zap.png"
+        srcset="/homepage/static/0900b390a1bee8a0b4e3963560d23b5f/c26ae/zap.png 158w,
+/homepage/static/0900b390a1bee8a0b4e3963560d23b5f/6bdcf/zap.png 315w,
+/homepage/static/0900b390a1bee8a0b4e3963560d23b5f/664c8/zap.png 524w"
+        sizes="(max-width: 524px) 100vw, 524px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="outlook---no-data-in-the-code" style="position:relative;"><a href="#outlook---no-data-in-the-code" aria-label="outlook   no data in the code permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Outlook - No Data in the Code</h2>
+<p>The metadata editor has been developed based on JSON Schema.
+The values in the dropdown menus are SKOS vocabularies.
+This should (in the future) make it possible to easily develop other JSON schemas and use other vocabularies.</p>
+<p>Why not build a community based collection for recipes in the future?
+Only the metadata and new vocabularies need to be developed.
+Many components of Note Fetcher or Bitcoin Library can be reused.</p>
+<h2 id="conclusion" style="position:relative;"><a href="#conclusion" aria-label="conclusion permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conclusion</h2>
+<p>I published the code on GitHub in the <a href="https://github.com/bitcoin-library">organization "Bitcoin Library"</a>.
+The repos are probably not very helpful at the moment and the code is not very pretty either.
+In the next few weeks I hope to first deploy the service once and then refactor and document the code.</p>
+<p>I appreciate any feedback, questions and suggestions. And of course especially if someone wants to contribute.</p>
+<h2 id="links" style="position:relative;"><a href="#links" aria-label="links permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Links</h2>
+<ul>
+<li><a href="https://blog.skohub.io/2020-06-25-skohub-pubsub/">SkoHub PubSub</a></li>
+<li><a href="https://activitypub.rocks/">Activity Pub</a></li>
+<li><a href="https://dini-ag-kim.github.io/skos-einfuehrung/#/">Einführung in SKOS</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a></li>
+<li><a href="https://portal.einundzwanzig.space/de/library/library-item?l=de">Einundzwanzig Bibliothek</a></li>
+<li><a href="https://dorahacks.io/hackathon/hack-nostr-on">Hack-Nostr-On</a></li>
+<li><a href="https://nostr.com/">Nostr</a></li>
+</ul>
+<h1 id="german-version" style="position:relative;"><a href="#german-version" aria-label="german version permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>German version</h1>
 <p>Wie manche von euch wissen, arbeite ich im Bereich Open Education.
 Dabei treibt mich besonders das Interesse, wie Communities dezentral Bildungsmaterialien sammeln, annotieren und für andere zugänglich machen können.
 Adrian Pohl und Felix Ostrowki haben dazu 2020 den Vorschlag gemacht, <a href="https://blog.skohub.io/2020-06-25-skohub-pubsub/">Vokabulare zu sozialen Akteuren zu machen</a>.
@@ -234,7 +481,7 @@ Damit soll verdeutlicht werden, wie oft das Metadatum vergeben wurde.</p>
       />
   </a>
     </span></p>
-<h3 id="value-for-value" style="position:relative;"><a href="#value-for-value" aria-label="value for value permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Value For Value</h3>
+<h3 id="value-for-value-1" style="position:relative;"><a href="#value-for-value-1" aria-label="value for value 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Value For Value</h3>
 <p>Content Ersteller, besonders für Bildungsmaterialien, erweisen der Gesellschaft einen unschätzbaren Dienst, indem sie ihre Materialien im Web bereit stellen.
 Häufig werden dabei auch <a href="https://creativecommons.org/licenses/?lang=en">Creative Commons Lizenzen</a> verwendet, die es anderen erlauben, die Materialien zu verwenden und zu remixen.
 Damit können die Materialien einfach und rechtssicher angepasst und weiterverwendet werden.</p>
@@ -285,7 +532,7 @@ Viele Komponenten des Note Fetcher oder der Bitcoin Library können wiederverwen
 Die Repos sind vermutlich momentan noch wenig hilfreich und der Code auch nicht besonders hübsch.
 In den nächsten Wochen hoffe ich zunächst den Service einmal zu deployen und anschließend den Code zu refactoren und zu dokumentieren.</p>
 <p>Ich freue mich über jedes Feedback, Fragen und Anregungen. Und natürlich besonders, falls jemand mitarbeiten möchte.</p>
-<h2 id="links" style="position:relative;"><a href="#links" aria-label="links permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Links</h2>
+<h2 id="links-1" style="position:relative;"><a href="#links-1" aria-label="links 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Links</h2>
 <ul>
 <li><a href="https://blog.skohub.io/2020-06-25-skohub-pubsub/">SkoHub PubSub</a></li>
 <li><a href="https://activitypub.rocks/">Activity Pub</a></li>
