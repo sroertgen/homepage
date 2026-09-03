@@ -8,8 +8,9 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   jsonLd: object | object[];
+  redirectTo?: string;
 }
-const { title, description, path, image, type = "website", jsonLd } = Astro.props;
+const { title, description, path, image, type = "website", jsonLd, redirectTo } = Astro.props;
 const canonical = new URL(path, site.url).toString();
 const ogImage = image ? image : new URL("/og-default.png", site.url).toString();
 const card = image ? "summary_large_image" : "summary";
@@ -30,9 +31,11 @@ const jsonLdText = jsonLdScript(jsonLd);
 <meta property="og:url" content={canonical} />
 <meta property="og:type" content={type} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:locale" content="en" />
+<meta property="og:locale" content="en_GB" />
 <meta name="twitter:card" content={card} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
 <script type="application/ld+json" set:html={jsonLdText} />
+{redirectTo && <meta http-equiv="refresh" content={`0; url=${redirectTo}`} />}
+{redirectTo && <meta name="robots" content="noindex" />}

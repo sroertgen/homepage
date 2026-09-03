@@ -1,5 +1,5 @@
 import type { NostrEvent, Filter } from "applesauce-core/helpers";
-import { getAddressPointerForEvent, getTagValue, naddrEncode } from "applesauce-core/helpers";
+import { getAddressPointerForEvent, getTagValue, naddrEncode, verifyEvent } from "applesauce-core/helpers";
 import { getArticleImage, getArticlePublished, getArticleSummary, getArticleTitle } from "applesauce-common/helpers";
 import { lastValueFrom, timeout, catchError, of, toArray, type Observable } from "rxjs";
 
@@ -62,17 +62,19 @@ export async function fetchArticles(
   request: RequestFn,
   opts: { relays: string[]; pubkey: string; since?: number; timeoutMs?: number },
 ): Promise<NostrArticle[]> {
-  const collected: NostrEvent[] = [];
+  const ms = opts.timeoutMs ?? 15000;
   const events = await lastValueFrom(
     request(opts.relays, articleFilter(opts.pubkey, opts.since)).pipe(
-      timeout(opts.timeoutMs ?? 15000),
+      timeout({ first: ms, each: ms }),
       catchError(() => of()),
       toArray(),
     ),
     { defaultValue: [] as NostrEvent[] },
   );
-  collected.push(...events);
-  return newestPerDTag(collected)
+  const verified = events.filter(
+    (e) => e.pubkey === opts.pubkey && e.kind === ARTICLE_KIND && verifyEvent(e),
+  );
+  return newestPerDTag(verified)
     .map(articleFromEvent)
     .sort((a, b) => b.publishedAt - a.publishedAt || b.createdAt - a.createdAt);
 }

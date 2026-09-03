@@ -4,7 +4,9 @@
   "type": "module",
   "version": "1.0.0",
   "license": "MIT",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -28,9 +30,10 @@
     "rxjs": "^7.8.0"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.9",
+    "@astrojs/check": "^0.9.10",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "nostr-tools": "^2.25.1",
     "typescript": "^5.6.0",
     "vitest": "^4.1.0"
   }

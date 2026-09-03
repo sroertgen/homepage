@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from "vitest";
 import { of, throwError } from "rxjs";
-import type { NostrEvent } from "applesauce-core/helpers";
 import { nostrArticlesLoader } from "../src/loaders/nostr-articles";
+import { TEST_PUBKEY, signedArticle } from "./helpers/events";
 
-const PUBKEY = "1c5ff3caacd842c01dca8f378231b16617516d214da75c7aeabbe9e1efe9c0f6";
-const ev = (d: string, created_at: number, content: string): NostrEvent =>
-  ({ id: String(created_at).padStart(64, "0"), pubkey: PUBKEY, kind: 30023, created_at, content, tags: [["d", d], ["title", "T " + d]], sig: "" }) as NostrEvent;
+const PUBKEY = TEST_PUBKEY;
+const ev = (d: string, created_at: number, content: string) =>
+  signedArticle({ d, created_at, content, title: "T " + d });
 
 function fakeContext() {
   const set = new Map<string, any>();

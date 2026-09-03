@@ -15,8 +15,7 @@ export default function LiveArticles({ pubkey, relays, since, knownDTags }: Prop
       .then((articles) => {
         if (!cancelled) setFresh(filterNewArticles(articles, knownDTags));
       })
-      .catch(() => {})
-      .finally(() => pool.close());
+      .catch(() => {});
     return () => {
       cancelled = true;
       pool.close();
