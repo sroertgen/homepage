@@ -102,3 +102,7 @@ export function workPage(projects: { title: string; summary: string; client: str
     },
   ];
 }
+
+export function jsonLdScript(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}

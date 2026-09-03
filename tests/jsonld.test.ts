@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { person, website, blogPosting, scholarlyList, workPage, absolute } from "../src/lib/jsonld";
+import { person, website, blogPosting, scholarlyList, workPage, absolute, jsonLdScript } from "../src/lib/jsonld";
 import { site } from "../src/data/site";
 
 describe("absolute", () => {
@@ -71,5 +71,14 @@ describe("workPage", () => {
     expect(item["@type"]).toBe("CreativeWork");
     expect(item.sourceOrganization).toEqual({ "@type": "Organization", name: "C" });
     expect(item.url).toBe("https://p/");
+  });
+});
+
+describe("jsonLdScript", () => {
+  it("escapes < so a </script> payload cannot break out, and round-trips via JSON.parse", () => {
+    const value = { a: "</script><b>" };
+    const out = jsonLdScript(value);
+    expect(out.includes("<")).toBe(false);
+    expect(JSON.parse(out)).toEqual(value);
   });
 });

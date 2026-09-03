@@ -1,5 +1,6 @@
 ---
 import { site } from "../data/site";
+import { jsonLdScript } from "../lib/jsonld";
 interface Props {
   title: string;
   description: string;
@@ -10,8 +11,9 @@ interface Props {
 }
 const { title, description, path, image, type = "website", jsonLd } = Astro.props;
 const canonical = new URL(path, site.url).toString();
-const ogImage = image ?? new URL("/og-default.png", site.url).toString();
+const ogImage = image ? image : new URL("/og-default.png", site.url).toString();
 const card = image ? "summary_large_image" : "summary";
+const jsonLdText = jsonLdScript(jsonLd);
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,4 +35,4 @@ const card = image ? "summary_large_image" : "summary";
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script type="application/ld+json" set:html={jsonLdText} />
