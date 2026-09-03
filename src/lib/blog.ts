@@ -21,7 +21,7 @@ export type NostrArticleInput = {
 export function normalizeTitle(title: string): string {
   return title
     .toLowerCase()
-    .replace(/[\p{P}\p{S}\p{Extended_Pictographic}️]/gu, " ")
+    .replace(/[\p{P}\p{S}\p{M}\p{Cf}\p{Extended_Pictographic}]/gu, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -54,9 +54,18 @@ export function mergeBlog(
   posts: LocalPostInput[],
   articles: NostrArticleInput[],
 ): { entries: BlogEntry[]; hiddenPostIds: string[] } {
-  const articleTitles = new Set(articles.map((a) => normalizeTitle(a.title)));
+  // Build set of article titles, excluding empty strings
+  const articleTitles = new Set(
+    articles
+      .map((a) => normalizeTitle(a.title))
+      .filter((title) => title.length > 0)
+  );
+  // Only hide posts whose normalized title is non-empty and matches an article
   const hiddenPostIds = posts
-    .filter((p) => articleTitles.has(normalizeTitle(p.title)))
+    .filter((p) => {
+      const normalized = normalizeTitle(p.title);
+      return normalized.length > 0 && articleTitles.has(normalized);
+    })
     .map((p) => p.id);
   const hidden = new Set(hiddenPostIds);
 

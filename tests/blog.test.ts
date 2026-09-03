@@ -7,6 +7,9 @@ describe("normalizeTitle", () => {
       .toBe("nostr rdf bringing linked data to the nostr world");
     expect(normalizeTitle("  Blog   run! ")).toBe("blog run");
   });
+  it("strips variation selectors, zero-width joiners, and combining marks", () => {
+    expect(normalizeTitle("Flags 🇩🇪 and 👍🏽 here")).toBe("flags and here");
+  });
 });
 
 describe("excerptFrom", () => {
@@ -57,5 +60,17 @@ describe("mergeBlog", () => {
   it("converts publishedAt seconds to a Date", () => {
     const { entries } = mergeBlog([], articles);
     expect(entries[0].date.getTime()).toBe(1749024507 * 1000);
+  });
+
+  it("does not hide posts when titles normalize to empty strings", () => {
+    const postsWithPunctuation = [
+      { id: "exclamation", title: "!!!", date: new Date("2023-01-01"), body: "Test" },
+    ];
+    const articlesWithEmoji = [
+      { dTag: "emoji", title: "🎉🎉🎉", publishedAt: 1672617600, summary: "", content: "Content", naddr: "naddr1xyz" },
+    ];
+    const { entries, hiddenPostIds } = mergeBlog(postsWithPunctuation, articlesWithEmoji);
+    expect(hiddenPostIds).toEqual([]);
+    expect(entries.map((e) => e.id)).toEqual(["emoji", "exclamation"]);
   });
 });
