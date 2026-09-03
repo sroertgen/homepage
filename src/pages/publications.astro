@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+const pubs = (await getCollection("publications")).sort((a, b) => b.data.year - a.data.year);
+const description = "Publications by Steffen Rörtgen on metadata standards and data spaces in educational infrastructures.";
+---
+<Base title={`Publications · ${site.name}`} description={description} path="/publications/" jsonLd={{ "@context": "https://schema.org", "@type": "ItemList", itemListElement: [] }}>
+  <h2 class="section-title">Publications</h2>
+  {pubs.map((p) => (
+    <div class="entry">
+      <h3><a href={p.data.url} target="_blank" rel="noopener">{p.data.title}</a></h3>
+      <div class="meta">{p.data.authors.join(", ")}</div>
+      <p>{p.data.venue}. {p.data.publisher}, {p.data.year}.{p.data.doi && <> DOI: <a href={`https://doi.org/${p.data.doi}`}>{p.data.doi}</a></>}{p.data.openAccess && <span class="badge">open access</span>}</p>
+    </div>
+  ))}
+</Base>

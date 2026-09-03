@@ -1,0 +1,20 @@
+- id: data-spaces-2026
+  title: Data Spaces in Educational Infrastructures
+  authors: [Steffen Rörtgen, Bastian Granas, Marcus Blümel, Jörg Lohrer, Gina Buchwald-Chassée]
+  venue: Digital Education and Innovation
+  publisher: Springer Nature Switzerland
+  year: 2026
+  doi: 10.1007/978-3-032-26816-7_11
+  url: https://doi.org/10.1007/978-3-032-26816-7_11
+  type: chapter
+  openAccess: true
+- id: metadata-standards-2023
+  title: "Metadata Standards in National Education Infrastructure: Development of Evaluation Criteria and Their Exemplary Application"
+  authors: [Steffen Rörtgen, Ronald Brenner, Holger Zimmermann, Matthias Hupfer, Annett Zobel, Ulrike Lucke]
+  venue: DELFI 2023 – 21. Fachtagung Bildungstechnologien, Lecture Notes in Informatics P-338
+  publisher: Gesellschaft für Informatik
+  year: 2023
+  doi: 10.18420/delfi2023-24
+  url: https://doi.org/10.18420/delfi2023-24
+  type: article
+  openAccess: true

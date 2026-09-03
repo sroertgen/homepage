@@ -1,0 +1,76 @@
+projects:
+  - id: index
+    title: INdex — infrastructure and index for higher-education teaching
+    client: Stiftung Innovation in der Hochschullehre
+    period: 2022 – ongoing
+    role: Freelance developer and consultant
+    summary: >-
+      An interoperable infrastructure and a filterable index for information that already exists
+      elsewhere: open educational resources, project descriptions, events, didactic models, and
+      funding measures. Built on the Nostr protocol with relays for each object type, crawlers that
+      pull in existing portal data, and a Typesense-backed search interface. I also co-lead the
+      working group on didactic metadata and connect individual portals to the infrastructure.
+    url: https://edufeed.org
+    tags: [Nostr, metadata, search, community]
+  - id: mem
+    title: MEM — machine-readable curriculum data
+    client: FWU (Digitalpakt Schule)
+    period: since 2024
+    role: Project lead, metadata and ontologies
+    summary: >-
+      A project to represent the curricula of the German federal states as machine-readable data.
+      I designed the data models, built prototypes, and transformed existing curriculum documents
+      into an OWL/RDF ontology that is served through one uniform interface.
+    url: https://w3id.org/lehrplan/ontology/
+    tags: [RDF, OWL, curricula, ontology design]
+  - id: skohub
+    title: SkoHub and metadaten.nrw
+    client: hbz NRW
+    period: 2022 – 2024
+    role: Research associate, maintainer of SkoHub
+    summary: >-
+      Maintainer of the SkoHub services, which make controlled vocabularies easy to publish and use
+      and are in production at IQB, SODIX/FWU, and WirLernenOnline. I built a reconciliation module
+      following the W3C specification, a SHACL shape for SKOS validation, and ran support, workshops,
+      and trainings.
+    url: https://skohub.io
+    tags: [SKOS, vocabularies, SHACL, reconciliation]
+  - id: bird
+    title: BIRD — prototype of the national education platform
+    client: GWDG
+    period: 2021 – 2022
+    role: Product owner, work package "Qualification – Content"
+    summary: >-
+      Infrastructure work for the prototype of Germany's national education platform: a survey and
+      classification of common education standards by use case and audience, connecting the
+      WirLernenOnline portal, and use cases, personas, and quality criteria for open educational
+      resources. The metadata evaluation criteria were published as a DELFI 2023 paper.
+    tags: [standards, metadata, product ownership]
+  - id: wlo
+    title: WirLernenOnline and JOINTLY
+    client: GWDG
+    period: 2019 – 2021
+    role: Developer
+    summary: >-
+      The prototype that became the basis of the ETL pipeline and search engine of WirLernenOnline,
+      Germany's open search portal for educational resources. I built tools that check the metadata
+      quality of crawled content and help editorial teams improve it, and I was responsible for the
+      metadata sets.
+    url: https://wirlernenonline.de
+    tags: [ETL, metadata quality, search]
+  - id: comcal
+    title: ComCal — open education community calendar
+    client: OE_Space funding
+    period: "2025"
+    role: Pitch and implementation
+    summary: >-
+      An interoperable community calendar on the Nostr protocol, pitched and delivered within a
+      two-month funding window. Live and in use by the open education community.
+    url: https://comcal.edufeed.org
+    tags: [Nostr, calendar, community]
+roles:
+  - id: dini
+    body: DINI-AG-KIM — lead of the curricula group, deputy lead of the OER metadata group
+  - id: oer-beirat
+    body: Member of the OER advisory board of the German Federal Ministry of Education and Research (BMBF), appointed for metadata infrastructure expertise
+    since: "2024"
