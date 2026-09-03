@@ -2,10 +2,12 @@
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import { site } from "../../data/site";
+import { getBlog } from "../../lib/content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+  const [posts, { hiddenPostIds }] = await Promise.all([getCollection("posts"), getBlog()]);
+  const hidden = new Set(hiddenPostIds);
+  return posts.filter((p) => !hidden.has(p.id)).map((post) => ({ params: { id: post.id }, props: { post } }));
 }
 const { post } = Astro.props;
 const { Content } = await render(post);

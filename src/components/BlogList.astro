@@ -1,0 +1,16 @@
+---
+import type { BlogEntry } from "../lib/blog";
+import { formatDate } from "../lib/content";
+interface Props { entries: BlogEntry[] }
+const { entries } = Astro.props;
+---
+{entries.map((e) => (
+  <div class="entry">
+    <h3>
+      <a href={e.href}>{e.title}</a>
+      {e.source === "nostr" && <span class="badge">on Nostr</span>}
+    </h3>
+    <div class="meta">{formatDate(e.date)}</div>
+    <p>{e.excerpt}</p>
+  </div>
+))}

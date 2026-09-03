@@ -2,6 +2,8 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { generateContentId } from "./lib/ids";
+import { nostrArticlesLoader } from "./loaders/nostr-articles";
+import { site } from "./data/site";
 
 const markdownSchema = z.object({
   title: z.string(),
@@ -19,4 +21,8 @@ const projects = defineCollection({
   schema: markdownSchema,
 });
 
-export const collections = { posts, projects };
+const articles = defineCollection({
+  loader: nostrArticlesLoader({ pubkey: site.pubkey, relays: [...site.relays] }),
+});
+
+export const collections = { posts, projects, articles };
