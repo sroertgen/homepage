@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import { getBlog } from "../lib/content";
+import { normalizeTitle } from "../lib/blog";
+import { legacySlugFor } from "../lib/legacy";
+import { website } from "../lib/jsonld";
+
+export async function getStaticPaths() {
+  // Old Gatsby routes were flat (`/<slug>/`). Never generate a stub for a slug
+  // that collides with one of today's real top-level routes.
+  const RESERVED = new Set(["about", "work", "publications", "posts", "projects", "articles"]);
+
+  const [posts, projects, articles, { hiddenPostIds }] = await Promise.all([
+    getCollection("posts"),
+    getCollection("projects"),
+    getCollection("articles"),
+    getBlog(),
+  ]);
+  const hidden = new Set(hiddenPostIds);
+
+  const paths: { params: { legacy: string }; props: { title: string; description: string; href: string } }[] = [];
+
+  for (const post of posts) {
+    if (!post.filePath) continue;
+    const slug = legacySlugFor(post.filePath);
+    if (RESERVED.has(slug)) continue;
+    let href = `/posts/${post.id}/`;
+    if (hidden.has(post.id)) {
+      // This post was superseded by a Nostr article with the same title; send
+      // visitors there instead of to a post page that no longer exists.
+      const normalized = normalizeTitle(post.data.title);
+      const match = articles.find((a) => normalizeTitle(a.data.title) === normalized);
+      if (match) href = `/articles/${match.id}/`;
+    }
+    paths.push({ params: { legacy: slug }, props: { title: post.data.title, description: post.data.title, href } });
+  }
+
+  for (const project of projects) {
+    if (!project.filePath) continue;
+    const slug = legacySlugFor(project.filePath);
+    if (RESERVED.has(slug)) continue;
+    paths.push({
+      params: { legacy: slug },
+      props: { title: project.data.title, description: project.data.title, href: `/projects/${project.id}/` },
+    });
+  }
+
+  return paths;
+}
+
+const { title, description, href } = Astro.props;
+---
+<Base title={title} description={description} path={href} jsonLd={website()} redirectTo={href} />

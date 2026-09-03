@@ -10,6 +10,7 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   jsonLd: object | object[];
+  redirectTo?: string;
 }
 const props = Astro.props;
 const current = Astro.url.pathname;
