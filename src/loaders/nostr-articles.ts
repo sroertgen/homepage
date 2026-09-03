@@ -1,6 +1,7 @@
 import type { Loader } from "astro/loaders";
 import { z } from "astro/zod";
 import { RelayPool, RelayGroup } from "applesauce-relay";
+import type { NostrEvent } from "applesauce-core/helpers";
 import { getSeenRelays, normalizeRelayUrl } from "applesauce-core/helpers";
 import { tap } from "rxjs";
 import { fetchArticles, type RequestFn } from "../lib/nostr";
@@ -30,7 +31,17 @@ export function nostrArticlesLoader(opts: {
     async load({ store, parseData, renderMarkdown, logger }) {
       type Rendered = Awaited<ReturnType<typeof renderMarkdown>>;
       let pool: RelayPool | undefined;
-      const seenRelays = new Set<string>();
+      // Collect every raw event as it arrives, tagged with the single relay
+      // that sent it (applesauce-relay marks this before any deduplication).
+      // pool.request()'s default dedup store is EventMemory, whose add()
+      // just returns the first-seen object for a duplicate id WITHOUT
+      // merging the new arrival's seen-relay mark into it (unlike the full
+      // EventStore class, which does merge) -- so a real duplicate received
+      // from a second and third relay would otherwise vanish without a
+      // trace of which relay sent it. Passing eventStore: null disables that
+      // dedup for this request; fetchArticles's own newestPerDTag already
+      // collapses any resulting duplicate/near-duplicate raw events.
+      const collectedEvents: NostrEvent[] = [];
       const request: RequestFn =
         opts.request ??
         ((relays, filters) => {
@@ -38,8 +49,9 @@ export function nostrArticlesLoader(opts: {
           return pool
             .request(relays, filters, {
               complete: RelayGroup.completeOnAny(RelayGroup.completeAfterFirstRelay(RELAY_TIMEOUT_MS), RelayGroup.completeOnAllEose()),
+              eventStore: null,
             })
-            .pipe(tap((e) => { for (const r of getSeenRelays(e) ?? []) seenRelays.add(r); }));
+            .pipe(tap((e) => collectedEvents.push(e)));
         });
 
       logger.info(`Fetching kind 30023 for ${opts.pubkey.slice(0, 8)} from ${opts.relays.length} relays`);
@@ -54,6 +66,10 @@ export function nostrArticlesLoader(opts: {
         pool?.close?.();
       }
 
+      const seenRelays = new Set<string>();
+      for (const e of collectedEvents) {
+        for (const r of getSeenRelays(e) ?? []) seenRelays.add(r);
+      }
       for (const url of opts.relays) {
         if (!seenRelays.has(normalizeRelayUrl(url))) logger.warn(`nostr-articles loader: relay ${url} did not answer`);
       }
