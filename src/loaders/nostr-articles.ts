@@ -33,18 +33,22 @@ export function nostrArticlesLoader(opts: {
         });
 
       logger.info(`Fetching kind 30023 for ${opts.pubkey.slice(0, 8)} from ${opts.relays.length} relays`);
-      const articles = await fetchArticles(request, {
-        relays: opts.relays,
-        pubkey: opts.pubkey,
-        timeoutMs: opts.timeoutMs,
-      });
-      pool?.close?.();
+      let articles;
+      try {
+        articles = await fetchArticles(request, {
+          relays: opts.relays,
+          pubkey: opts.pubkey,
+          timeoutMs: opts.timeoutMs,
+        });
+      } finally {
+        pool?.close?.();
+      }
 
       if (articles.length === 0) {
         throw new Error("nostr-articles loader: no articles received from any relay. Refusing to build without them.");
       }
 
-      store.clear();
+      const entries: { id: string; data: unknown; body: string; rendered: unknown }[] = [];
       for (const a of articles) {
         const { content, ...rest } = a;
         const data = await parseData({ id: a.dTag, data: rest });
@@ -54,7 +58,12 @@ export function nostrArticlesLoader(opts: {
         } catch (err) {
           throw new Error(`nostr-articles loader: failed to render markdown for d-tag "${a.dTag}": ${(err as Error).message}`);
         }
-        store.set({ id: a.dTag, data, body: content, rendered });
+        entries.push({ id: a.dTag, data, body: content, rendered });
+      }
+
+      store.clear();
+      for (const entry of entries) {
+        store.set(entry);
       }
       logger.info(`Stored ${articles.length} articles`);
     },

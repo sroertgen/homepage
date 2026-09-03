@@ -35,4 +35,23 @@ describe("nostrArticlesLoader", () => {
     const loader = nostrArticlesLoader({ pubkey: PUBKEY, relays: ["wss://x"], request });
     await expect(loader.load(fakeContext())).rejects.toThrow(/no articles/i);
   });
+
+  it("leaves the store untouched when a later article fails to render", async () => {
+    // "a" has an earlier created_at/publishedAt than "b", so fetchArticles (sorted newest first)
+    // yields b first, then a — making "a" the second article rendered.
+    const request = () => of(ev("a", 1, "one"), ev("b", 2, "two"));
+    const loader = nostrArticlesLoader({ pubkey: PUBKEY, relays: ["wss://x"], request });
+    const ctx = fakeContext();
+    ctx.set.set("pre-existing", { id: "pre-existing" });
+
+    let calls = 0;
+    ctx.renderMarkdown = async (md: string) => {
+      calls++;
+      if (calls === 2) throw new Error("boom");
+      return { html: `<p>${md}</p>` };
+    };
+
+    await expect(loader.load(ctx)).rejects.toThrow(/"a"/);
+    expect([...ctx.set.keys()]).toEqual(["pre-existing"]);
+  });
 });
