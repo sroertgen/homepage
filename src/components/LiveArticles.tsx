@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RelayPool } from "applesauce-relay";
 import { fetchArticles, filterNewArticles, type NostrArticle } from "../lib/nostr";
+import { formatDate } from "../lib/dates";
 
 type Props = { pubkey: string; relays: string[]; since: number; knownDTags: string[] };
 
@@ -15,12 +16,12 @@ export default function LiveArticles({ pubkey, relays, since, knownDTags }: Prop
         if (!cancelled) setFresh(filterNewArticles(articles, knownDTags));
       })
       .catch(() => {})
-      .finally(() => pool.close?.());
+      .finally(() => pool.close());
     return () => {
       cancelled = true;
-      pool.close?.();
+      pool.close();
     };
-  }, [pubkey, since]);
+  }, [pubkey, since, relays, knownDTags]);
 
   if (fresh.length === 0) return null;
 
@@ -33,7 +34,7 @@ export default function LiveArticles({ pubkey, relays, since, knownDTags }: Prop
             <span className="badge new">new on Nostr</span>
           </h3>
           <div className="meta">
-            {new Date(a.publishedAt * 1000).toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" })}
+            {formatDate(new Date(a.publishedAt * 1000))}
           </div>
           {a.summary && <p>{a.summary}</p>}
         </div>

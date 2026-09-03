@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import { mergeBlog, type BlogEntry } from "./blog";
+export { formatDate } from "./dates";
 
 export async function getBlog(): Promise<{ entries: BlogEntry[]; hiddenPostIds: string[]; knownDTags: string[] }> {
   const [posts, articles] = await Promise.all([getCollection("posts"), getCollection("articles")]);
@@ -15,8 +16,4 @@ export async function getBlog(): Promise<{ entries: BlogEntry[]; hiddenPostIds: 
     })),
   );
   return { entries, hiddenPostIds, knownDTags: articles.map((a) => a.data.dTag) };
-}
-
-export function formatDate(d: Date): string {
-  return d.toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" });
 }
