@@ -8,8 +8,10 @@ interface Props {
   type?: "website" | "article";
   jsonLd: object | object[];
 }
-const { title, description, path, jsonLd } = Astro.props;
+const { title, description, path, image, type = "website", jsonLd } = Astro.props;
 const canonical = new URL(path, site.url).toString();
+const ogImage = image ?? new URL("/og-default.png", site.url).toString();
+const card = image ? "summary_large_image" : "summary";
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,5 +19,18 @@ const canonical = new URL(path, site.url).toString();
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 <link rel="icon" href="/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title={site.title} href="/rss.xml" />
+<link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="stylesheet" href="/fonts/fonts.css" />
+<meta property="og:site_name" content={site.title} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content={type} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="en" />
+<meta name="twitter:card" content={card} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

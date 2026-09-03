@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import { site } from "../../data/site";
+import { blogPosting } from "../../lib/jsonld";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -16,7 +17,7 @@ const date = project.data.date.toISOString().slice(0, 10);
   description={project.data.title}
   path={`/projects/${project.id}/`}
   type="article"
-  jsonLd={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: project.data.title, datePublished: date }}
+  jsonLd={blogPosting({ title: project.data.title, path: `/projects/${project.id}/`, datePublished: project.data.date })}
 >
   <article>
     <h1>{project.data.title}</h1>

@@ -2,13 +2,14 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import { site } from "../data/site";
+import { workPage } from "../lib/jsonld";
 
 const projects = await getCollection("portfolio");
 const roles = await getCollection("roles");
 const older = (await getCollection("projects")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const description = "What Steffen Rörtgen can be hired for: metadata infrastructure for education, Nostr and protocol-based systems, SKOS vocabularies and linked data, workshops and consulting.";
 ---
-<Base title={`Work · ${site.name}`} description={description} path="/work/" jsonLd={{ "@context": "https://schema.org", "@type": "Person", name: site.name }}>
+<Base title={`Work · ${site.name}`} description={description} path="/work/" jsonLd={workPage(projects.map((p) => ({ title: p.data.title, summary: p.data.summary, client: p.data.client, url: p.data.url })))}>
   <h2 class="section-title">Work</h2>
   <p>I build the plumbing that makes open education findable. Things I can be hired for:</p>
   <ul>

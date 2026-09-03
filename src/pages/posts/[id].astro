@@ -3,6 +3,8 @@ import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import { site } from "../../data/site";
 import { getBlog } from "../../lib/content";
+import { excerptFrom } from "../../lib/blog";
+import { blogPosting } from "../../lib/jsonld";
 
 export async function getStaticPaths() {
   const [posts, { hiddenPostIds }] = await Promise.all([getCollection("posts"), getBlog()]);
@@ -15,10 +17,10 @@ const date = post.data.date.toISOString().slice(0, 10);
 ---
 <Base
   title={`${post.data.title} · ${site.name}`}
-  description={post.data.title}
+  description={excerptFrom(post.body ?? "") || post.data.title}
   path={`/posts/${post.id}/`}
   type="article"
-  jsonLd={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.data.title, datePublished: date }}
+  jsonLd={blogPosting({ title: post.data.title, path: `/posts/${post.id}/`, datePublished: post.data.date, description: excerptFrom(post.body ?? "") })}
 >
   <article>
     <h1>{post.data.title}</h1>

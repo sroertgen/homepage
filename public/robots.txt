@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://steffen-roertgen.de/sitemap-index.xml

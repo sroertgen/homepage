@@ -5,9 +5,10 @@ import LiveArticles from "../components/LiveArticles";
 import { site } from "../data/site";
 import { getBlog } from "../lib/content";
 import { BUILD_TIME } from "../data/build";
+import { website, person } from "../lib/jsonld";
 const { entries, knownDTags } = await getBlog();
 ---
-<Base title={site.title} description={site.description} path="/" jsonLd={{ "@context": "https://schema.org", "@type": "WebSite", name: site.title, url: site.url }}>
+<Base title={site.title} description={site.description} path="/" jsonLd={[website(), person()]}>
   <h2 class="section-title">Blog</h2>
   <LiveArticles client:idle pubkey={site.pubkey} relays={[...site.relays]} since={BUILD_TIME} knownDTags={knownDTags} />
   <BlogList entries={entries} />
