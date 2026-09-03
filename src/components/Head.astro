@@ -1,0 +1,21 @@
+---
+import { site } from "../data/site";
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  type?: "website" | "article";
+  jsonLd: object | object[];
+}
+const { title, description, path, jsonLd } = Astro.props;
+const canonical = new URL(path, site.url).toString();
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/fonts/fonts.css" />
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -1,54 +1,35 @@
 {
   "name": "homepage",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
+  "type": "module",
+  "version": "1.0.0",
   "license": "MIT",
+  "engines": { "node": ">=24" },
   "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:build": "node scripts/check-build.mjs"
   },
   "dependencies": {
-    "@emotion/react": "^11.0.0",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "^0.1.9",
-    "gatsby": "^4.16.0",
-    "gatsby-plugin-emotion": "^7.16.0",
-    "gatsby-plugin-image": "^2.16.1",
-    "gatsby-plugin-sharp": "^4.16.1",
-    "gatsby-plugin-typography": "^4.16.0",
-    "gatsby-plugin-web-font-loader": "^1.0.4",
-    "gatsby-remark-autolink-headers": "^5.16.0",
-    "gatsby-remark-copy-linked-files": "^5.16.0",
-    "gatsby-remark-images": "^6.16.0",
-    "gatsby-remark-prismjs": "^6.16.0",
-    "gatsby-source-filesystem": "^4.16.0",
-    "gatsby-transformer-remark": "^5.16.0",
-    "gatsby-transformer-sharp": "^4.16.0",
-    "prismjs": "^1.20.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-icons": "^4.4.0",
-    "react-typography": "^0.16.19",
-    "typography": "^0.16.19",
-    "typography-theme-kirkham": "^0.16.19"
+    "@astrojs/react": "^6.0.5",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "applesauce-common": "^6.2.0",
+    "applesauce-core": "^6.2.0",
+    "applesauce-relay": "^6.2.1",
+    "astro": "^7.2.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rxjs": "^7.8.0"
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0",
-    "prettier": "2.7.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^4.1.0"
   }
 }

@@ -70,3 +70,7 @@ yarn-error.log
 
 # superpowers scratch
 .superpowers/
+
+# Astro
+dist/
+.astro/

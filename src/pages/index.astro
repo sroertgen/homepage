@@ -1,0 +1,8 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+---
+<Base title={site.title} description={site.description} path="/" jsonLd={{ "@context": "https://schema.org", "@type": "WebSite", name: site.title, url: site.url }}>
+  <h2 class="section-title">Blog</h2>
+  <p>Coming back soon.</p>
+</Base>
