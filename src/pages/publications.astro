@@ -11,7 +11,7 @@ const description = "Publications by Steffen Rörtgen on metadata standards and 
     <div class="entry">
       <h3><a href={p.data.url} target="_blank" rel="noopener">{p.data.title}</a></h3>
       <div class="meta">{p.data.authors.join(", ")}</div>
-      <p>{p.data.venue}. {p.data.publisher}, {p.data.year}.{p.data.doi && <> DOI: <a href={`https://doi.org/${p.data.doi}`}>{p.data.doi}</a></>}{p.data.openAccess && <span class="badge">open access</span>}</p>
+      <p>{p.data.venue}. {p.data.publisher}, {p.data.year}.{p.data.doi && <> DOI: <a href={`https://doi.org/${p.data.doi}`} target="_blank" rel="noopener">{p.data.doi}</a></>}{p.data.openAccess && <span class="badge">open access</span>}</p>
     </div>
   ))}
 </Base>

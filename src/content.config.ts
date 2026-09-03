@@ -1,15 +1,10 @@
 import { defineCollection } from "astro:content";
 import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
-import * as yaml from "js-yaml";
 import { generateContentId } from "./lib/ids";
+import { parseYamlKey } from "./lib/yaml-key";
 import { nostrArticlesLoader } from "./loaders/nostr-articles";
 import { site } from "./data/site";
-
-function parseYamlKey(text: string, key: string) {
-  const doc = yaml.load(text) as Record<string, unknown[]>;
-  return doc[key];
-}
 
 const markdownSchema = z.object({
   title: z.string(),
