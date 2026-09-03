@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { site } from "../../data/site";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.date.toISOString().slice(0, 10);
+---
+<Base
+  title={`${post.data.title} · ${site.name}`}
+  description={post.data.title}
+  path={`/posts/${post.id}/`}
+  type="article"
+  jsonLd={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.data.title, datePublished: date }}
+>
+  <article>
+    <h1>{post.data.title}</h1>
+    <p class="meta">{date}</p>
+    <Content />
+  </article>
+</Base>
