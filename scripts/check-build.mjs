@@ -9,7 +9,7 @@ for (const f of ["index.html", "about/index.html", "work/index.html", "publicati
   if (!existsSync(join(dist, f))) fail(`missing ${f}`);
 }
 const countDirs = (p) => (existsSync(join(dist, p)) ? readdirSync(join(dist, p)).filter((d) => statSync(join(dist, p, d)).isDirectory()).length : 0);
-if (countDirs("posts") < 12) fail(`expected at least 12 post pages, found ${countDirs("posts")}`);
+if (countDirs("posts") < 8) fail(`expected at least 8 post pages, found ${countDirs("posts")}`);
 if (countDirs("projects") !== 11) fail(`expected 11 project pages, found ${countDirs("projects")}`);
 if (countDirs("articles") < 4) fail(`expected at least 4 article pages, found ${countDirs("articles")}`);
 

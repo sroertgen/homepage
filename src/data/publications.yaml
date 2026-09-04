@@ -8,6 +8,16 @@
   url: https://doi.org/10.1007/978-3-032-26816-7_11
   type: chapter
   openAccess: true
+- id: kompendium-didaktische-metadaten-2024
+  title: "Kompendium: Didaktische Metadaten"
+  authors: [Manuel Oellers, Steffen Rörtgen]
+  venue: Monograph (German), 226 pages
+  publisher: pedocs
+  year: 2024
+  doi: 10.25656/01:29235
+  url: https://www.pedocs.de/frontdoor.php?source_opus=29235
+  type: book
+  openAccess: true
 - id: metadata-standards-2023
   title: "Metadata Standards in National Education Infrastructure: Development of Evaluation Criteria and Their Exemplary Application"
   authors: [Steffen Rörtgen, Ronald Brenner, Holger Zimmermann, Matthias Hupfer, Annett Zobel, Ulrike Lucke]

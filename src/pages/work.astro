@@ -2,40 +2,23 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import { site } from "../data/site";
-import { workPage } from "../lib/jsonld";
+import { website, person } from "../lib/jsonld";
 
-const projects = await getCollection("portfolio");
 const roles = await getCollection("roles");
-const older = (await getCollection("projects")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const description = "What Steffen Rörtgen can be hired for: metadata infrastructure for education, Nostr and protocol-based systems, SKOS vocabularies and linked data, workshops and consulting.";
 ---
-<Base title={`Work · ${site.name}`} description={description} path="/work/" jsonLd={workPage(projects.map((p) => ({ title: p.data.title, summary: p.data.summary, client: p.data.client, url: p.data.url })))}>
+<Base title={`Work · ${site.name}`} description={description} path="/work/" jsonLd={[website(), person()]}>
   <h2 class="section-title">Work</h2>
   <p>I build the plumbing that makes open education findable. Things I can be hired for:</p>
   <ul>
     <li><strong>Metadata infrastructure for education</strong>: data models, application profiles, validation, and the pipelines around them.</li>
     <li><strong>Nostr and protocol-based systems</strong>: relays, crawlers, indexes, and clients that avoid platform lock-in.</li>
-    <li><strong>SKOS vocabularies and linked data</strong>: publishing, reconciliation, SHACL validation, RDF and OWL modelling.</li>
+    <li><strong>SKOS vocabularies and linked data</strong>: publishing, reconciliation, and setting up <a href="https://skohub.io" target="_blank" rel="noopener">SkoHub</a>.</li>
     <li><strong>Workshops and consulting</strong>: standards selection, metadata strategy, and hands-on training for editorial and developer teams.</li>
   </ul>
 
-  <h2 class="section-title">Selected projects</h2>
-  {projects.map((p) => (
-    <div class="card">
-      <h3>{p.data.url ? <a href={p.data.url} target="_blank" rel="noopener">{p.data.title}</a> : p.data.title}</h3>
-      <div class="meta">{p.data.client} · {p.data.period} · {p.data.role}</div>
-      <p>{p.data.summary}</p>
-      <div class="tags">{p.data.tags.map((t) => <span>{t}</span>)}</div>
-    </div>
-  ))}
 
   <h2 class="section-title">Committees</h2>
   <ul>{roles.map((r) => <li>{r.data.body}{r.data.since && ` (since ${r.data.since})`}</li>)}</ul>
 
-  <h2 class="section-title">Older tools and experiments</h2>
-  <ul>
-    {older.map((p) => (
-      <li><a href={`/projects/${p.id}/`}>{p.data.title}</a> <span class="meta">({p.data.date.getFullYear()})</span></li>
-    ))}
-  </ul>
 </Base>

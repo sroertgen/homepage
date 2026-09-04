@@ -54,7 +54,7 @@ const publications = defineCollection({
     year: z.number(),
     doi: z.string().optional(),
     url: z.string().url(),
-    type: z.enum(["chapter", "article", "talk"]),
+    type: z.enum(["chapter", "article", "book", "talk"]),
     openAccess: z.boolean().optional(),
   }),
 });
