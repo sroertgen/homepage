@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import { site } from "../data/site";
 import { website, person } from "../lib/jsonld";
-import photo from "../assets/photo.png";
+import photo from "../assets/portrait.jpg";
 import nostrLogo from "../assets/nostr_logo_blk.svg?url";
 const description = "Steffen Rörtgen: metadata and ontologies for open education, project lead for machine-readable curricula at FWU, freelance consultant, SkoHub maintainer, member of the BMBF OER advisory board.";
 ---
@@ -11,6 +11,7 @@ const description = "Steffen Rörtgen: metadata and ontologies for open educatio
   <div class="center">
     <p><i>Hacking for Open Education, in love with metadata. Always learning.</i></p>
     <Image src={photo} alt="Steffen Rörtgen" class="portrait" width={400} />
+    <p class="meta" style="font-size:0.75rem">Photo: Sarah Domandl (SARIPICTURE)</p>
     <h3>{site.name}</h3>
     <div class="social">
       <a href={`https://github.com/${site.github}`} target="_blank" rel="noopener" aria-label="GitHub">
