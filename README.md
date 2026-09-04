@@ -19,16 +19,13 @@ Source of https://steffen-roertgen.de, built with [Astro](https://astro.build).
 
 ## Deploy
 
-GitHub Actions builds and deploys to GitHub Pages on every push to `master`, once a day at 04:00 UTC (so new Nostr articles get static pages), and on manual dispatch.
+The site is served from the homelab (see `~/coding/homelab`, role `homepage`): a container on
+`docker-host` clones this repository's `master` branch, runs `npm ci && npm run build` with Node 24,
+and serves `dist/` with nginx behind Traefik. A systemd timer rebuilds it once a day so new Nostr
+articles get static pages; a failed build keeps the previous image serving.
 
-Custom domain: `public/CNAME` holds `steffen-roertgen.de`. DNS must point at GitHub Pages:
+GitHub Actions (`.github/workflows/ci.yml`) only tests, type-checks, and builds on push and pull
+requests. It does not deploy.
 
-| Type  | Name | Value |
-|-------|------|-------|
-| A     | @    | 185.199.108.153 |
-| A     | @    | 185.199.109.153 |
-| A     | @    | 185.199.110.153 |
-| A     | @    | 185.199.111.153 |
-| CNAME | www  | sroertgen.github.io |
-
-Then in the repository settings under Pages: source "GitHub Actions", custom domain `steffen-roertgen.de`, and enable "Enforce HTTPS" once the certificate is issued.
+DNS for `steffen-roertgen.de` and `www.steffen-roertgen.de`: an A record to the homelab VPS
+(89.58.9.7), no AAAA record. `www` redirects to the apex.

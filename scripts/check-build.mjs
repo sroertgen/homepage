@@ -5,7 +5,7 @@ const dist = "dist";
 const failures = [];
 const fail = (m) => failures.push(m);
 
-for (const f of ["index.html", "about/index.html", "work/index.html", "publications/index.html", "rss.xml", "sitemap-index.xml", "robots.txt", "CNAME", "og-default.png", "fonts/fonts.css"]) {
+for (const f of ["index.html", "about/index.html", "work/index.html", "publications/index.html", "rss.xml", "sitemap-index.xml", "robots.txt", "og-default.png", "fonts/fonts.css"]) {
   if (!existsSync(join(dist, f))) fail(`missing ${f}`);
 }
 const countDirs = (p) => (existsSync(join(dist, p)) ? readdirSync(join(dist, p)).filter((d) => statSync(join(dist, p, d)).isDirectory()).length : 0);
