@@ -83,7 +83,7 @@ references:
   - id: fwu
     org: FWU Institut für Film und Bild
     period: since 2024
-    work: Project lead for machine-readable curricula (MEM) in the Digitalpakt Schule; technical development of the ComCal community calendar.
+    work: Project lead for machine-readable curricula (MEM) in the Digitalpakt Schule.
     url: https://fwu.de
   - id: daad
     org: DAAD
@@ -103,7 +103,7 @@ references:
   - id: oer-strategie
     org: OER-Strategie (BMBFSFJ) · OE_Space
     period: "2025"
-    work: ComCal, an interoperable community calendar for open education, delivered within a three-month funding window.
+    work: Freelance development of ComCal, an interoperable community calendar for open education, delivered within a three-month funding window.
     url: https://www.oer-strategie.de/projects/open-education-community-calendar/
   - id: nope
     org: OER-Strategie (BMBFSFJ) · OE_Sprints
