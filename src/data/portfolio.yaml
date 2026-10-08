@@ -70,7 +70,7 @@ projects:
     tags: [Nostr, calendar, community]
 roles:
   - id: dini
-    body: DINI-AG-KIM — lead of the curricula group, deputy lead of the OER metadata group
+    body: DINI-AG-KIM — active member of the OER metadata group
   - id: oer-beirat
     body: Member of the OER advisory board of the German Federal Ministry of Education and Research (BMBF), appointed for metadata infrastructure expertise
     since: "2024"
