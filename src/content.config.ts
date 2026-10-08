@@ -44,6 +44,16 @@ const roles = defineCollection({
   schema: z.object({ body: z.string(), since: z.string().optional() }),
 });
 
+const references = defineCollection({
+  loader: file("src/data/portfolio.yaml", { parser: (text) => parseYamlKey(text, "references") }),
+  schema: z.object({
+    org: z.string(),
+    period: z.string(),
+    work: z.string(),
+    url: z.string().url().optional(),
+  }),
+});
+
 const publications = defineCollection({
   loader: file("src/data/publications.yaml"),
   schema: z.object({
@@ -59,4 +69,4 @@ const publications = defineCollection({
   }),
 });
 
-export const collections = { posts, projects, articles, portfolio, roles, publications };
+export const collections = { posts, projects, articles, portfolio, roles, references, publications };

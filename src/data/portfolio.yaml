@@ -74,3 +74,38 @@ roles:
   - id: oer-beirat
     body: Member of the OER advisory board of the German Federal Ministry of Education and Research (BMBF), appointed for metadata infrastructure expertise
     since: "2024"
+references:
+  - id: stil
+    org: Stiftung Innovation in der Hochschullehre
+    period: 2022 – ongoing
+    work: Freelance consulting and development, from a survey of metadata standards for interoperable portals to the Nostr-based infrastructure and index behind edufeed. Co-lead of the working group on didactic metadata.
+    url: https://stiftung-hochschullehre.de
+  - id: fwu
+    org: FWU Institut für Film und Bild
+    period: since 2024
+    work: Project lead for machine-readable curricula (MEM) in the Digitalpakt Schule; technical development of the ComCal community calendar.
+    url: https://fwu.de
+  - id: daad
+    org: DAAD
+    period: 2023 – 2024
+    work: Consulting on didactic metadata, which became the Kompendium Didaktische Metadaten.
+    url: https://www.daad.de
+  - id: hbz
+    org: hbz NRW
+    period: 2022 – 2024
+    work: Maintainer of SkoHub within metadaten.nrw, including the reconciliation service, SKOS validation, support and trainings.
+    url: https://www.hbz-nrw.de
+  - id: gwdg
+    org: GWDG
+    period: 2019 – 2022
+    work: Developer in JOINTLY and WirLernenOnline, then product owner in the BIRD prototype of the national education platform.
+    url: https://gwdg.de
+  - id: oer-strategie
+    org: OER-Strategie (BMBFSFJ) · OE_Space
+    period: "2025"
+    work: ComCal, an interoperable community calendar for open education, delivered within a three-month funding window.
+    url: https://www.oer-strategie.de/projects/open-education-community-calendar/
+  - id: nope
+    org: OER-Strategie (BMBFSFJ) · OE_Sprints
+    period: 2026 – 2027
+    work: "KI-NOPE: an MCP server and a chat prototype that let AI assistants work with educational data published on Nostr, plus a concept paper on retrieval-augmented generation over public education infrastructure. Six months, with Katharina Trostorff."

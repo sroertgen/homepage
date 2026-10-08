@@ -62,3 +62,10 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line);
   html { font-size: 17px; }
   .portrait { width: 70%; }
 }
+
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.section-head .section-title { margin-right: auto; }
+.lang-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.lang-toggle button { font: inherit; font-size: 0.8rem; padding: 0.15rem 0.6rem; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.lang-toggle button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.lang-block li + li { margin-top: 0.75rem; }
