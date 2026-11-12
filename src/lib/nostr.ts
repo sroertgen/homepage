@@ -52,10 +52,34 @@ export function articleFromEvent(event: NostrEvent): NostrArticle {
   };
 }
 
-export function articleFilter(pubkey: string, since?: number): Filter {
+export const DELETION_KIND = 5;
+
+/** The author's articles plus their deletion requests (NIP-09), in one REQ. */
+export function articleFilter(pubkey: string, since?: number): Filter[] {
   const f: Filter = { kinds: [ARTICLE_KIND], authors: [pubkey] };
   if (since !== undefined) f.since = since;
-  return f;
+  return [f, { kinds: [DELETION_KIND], authors: [pubkey] }];
+}
+
+/**
+ * NIP-09: drop articles the author asked to delete, by event id (`e`) or by
+ * coordinate (`a`). A coordinate deletion covers only versions created up to
+ * the request's timestamp, so a later republish of the same d tag stays.
+ */
+export function applyDeletions(articles: NostrEvent[], deletions: NostrEvent[]): NostrEvent[] {
+  const ids = new Set<string>();
+  const coords = new Map<string, number>();
+  for (const d of deletions) {
+    for (const [name, value] of d.tags) {
+      if (name === "e") ids.add(value);
+      if (name === "a") coords.set(value, Math.max(coords.get(value) ?? 0, d.created_at));
+    }
+  }
+  return articles.filter((a) => {
+    if (ids.has(a.id)) return false;
+    const at = coords.get(`${a.kind}:${a.pubkey}:${getTagValue(a, "d") ?? ""}`);
+    return at === undefined || a.created_at > at;
+  });
 }
 
 export async function fetchArticles(
@@ -71,8 +95,10 @@ export async function fetchArticles(
     ),
     { defaultValue: [] as NostrEvent[] },
   );
-  const verified = events.filter(
-    (e) => e.pubkey === opts.pubkey && e.kind === ARTICLE_KIND && verifyEvent(e),
+  const own = events.filter((e) => e.pubkey === opts.pubkey && verifyEvent(e));
+  const verified = applyDeletions(
+    own.filter((e) => e.kind === ARTICLE_KIND),
+    own.filter((e) => e.kind === DELETION_KIND),
   );
   return newestPerDTag(verified)
     .map(articleFromEvent)

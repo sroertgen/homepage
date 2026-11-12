@@ -69,8 +69,8 @@ describe("articleFromEvent", () => {
 
 describe("articleFilter", () => {
   it("builds a kind 30023 author filter, optionally with since", () => {
-    expect(articleFilter(PUBKEY)).toEqual({ kinds: [30023], authors: [PUBKEY] });
-    expect(articleFilter(PUBKEY, 5)).toEqual({ kinds: [30023], authors: [PUBKEY], since: 5 });
+    expect(articleFilter(PUBKEY)[0]).toEqual({ kinds: [30023], authors: [PUBKEY] });
+    expect(articleFilter(PUBKEY, 5)[0]).toEqual({ kinds: [30023], authors: [PUBKEY], since: 5 });
   });
 });
 
@@ -83,6 +83,32 @@ describe("fetchArticles", () => {
     const out = await fetchArticles(request, { relays: ["wss://x"], pubkey: PUBKEY });
     expect(out.map((a) => a.dTag)).toEqual(["b", "a"]);
     expect(out[1].content).toBe("v2");
+  });
+  it("drops an article the author deleted (NIP-09, by coordinate or by id)", async () => {
+    const byCoord = signedArticle({ d: "gone-a", created_at: 10 });
+    const byId = signedArticle({ d: "gone-e", created_at: 10 });
+    const kept = signedArticle({ d: "kept", created_at: 10 });
+    const older = signedArticle({ d: "republished", created_at: 10 });
+    const newer = signedArticle({ d: "republished", created_at: 30, content: "v2" });
+    const del = signedEvent({
+      kind: 5,
+      created_at: 20,
+      tags: [["a", `30023:${PUBKEY}:gone-a`], ["e", byId.id], ["a", `30023:${PUBKEY}:republished`], ["k", "30023"]],
+    });
+    const request = () => of(byCoord, byId, kept, older, newer, del);
+    const out = await fetchArticles(request, { relays: ["wss://x"], pubkey: PUBKEY });
+    expect(out.map((a) => a.dTag).sort()).toEqual(["kept", "republished"]);
+    expect(out.find((a) => a.dTag === "republished")?.content).toBe("v2");
+  });
+  it("ignores deletion requests signed by someone else", async () => {
+    const e = signedArticle({ d: "a", created_at: 10 });
+    const del = signedEvent({ kind: 5, created_at: 20, tags: [["a", `30023:${PUBKEY}:a`]] }, generateSecretKey());
+    const out = await fetchArticles(() => of(e, del), { relays: ["wss://x"], pubkey: PUBKEY });
+    expect(out.map((a) => a.dTag)).toEqual(["a"]);
+  });
+  it("asks for the author's deletion requests in the same request", () => {
+    const f = articleFilter(PUBKEY);
+    expect(Array.isArray(f) ? f.map((x) => x.kinds) : [f.kinds]).toEqual([[30023], [5]]);
   });
   it("returns what arrived before an error", async () => {
     const e = signedArticle({ d: "a" });
